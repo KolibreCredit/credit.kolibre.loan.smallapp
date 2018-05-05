@@ -1,0 +1,4 @@
+/* pages/login/login2.wxss */
+page{        
+    background-image:url("http://h.fengniaowu.com/loan/image/login.jpg");
+}

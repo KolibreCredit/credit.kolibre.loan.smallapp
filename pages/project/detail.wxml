@@ -1,0 +1,182 @@
+<!-- showToast -->
+<import src="../../utils/showToast.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}"/>
+<!-- filter -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+
+<!--pages/project/detail.wxml-->
+<view class="mui-content">
+    <view style="height:160px;position:relative">
+        <image src='http://h.fengniaowu.com/loan/image/vacancy.png' style="width:100%;height:160px"></image>
+        <image src="http://h.fengniaowu.com/loan/image/icon1.png" style="width:24px;height:24px" class="icon"></image>
+        <text class="villageName">{{villageName }}</text>
+        <view class="roomNumber">
+            <text>{{roomNumber}}</text>
+            <text wx:if="{{tenantName!=''}}" style="margin-left:10px">{{tenantName}}</text>
+            <text wx:if="{{roomType}}" class="security">安全</text>
+            <text wx:else class="verifycheck">核验</text>
+        </view>
+        <view class="roomState">{{filter.formatRoomState(roomState)}}</view>
+    </view>
+    <view class="records">
+        <view data-key="0" bindtap="tabRecord" class="{{tabIndex==0?'active':''}}">使用记录</view>
+        <view data-key="1" bindtap="tabRecord" class="{{tabIndex==1?'active':''}}">门锁</view>
+        <view data-key="2" bindtap="tabRecord" class="{{tabIndex==2?'active':''}}">水电表</view>
+    </view>
+    <view wx:if="{{tabIndex==0}}" class="roomRecords">
+        <view class="item" wx:for="{{roomRecords.data}}">
+            <view class="account">
+                <image src="{{item.accountPhotoUrl}}" class="accountPhotoUrl"></image>
+                <text>{{item.accountName}}</text>
+                <span>{{filter.formatYYYMMDD(item.createTime)}}</span>
+            </view>
+            <view class="picture">
+                <swiper bindchange="roomRecordPicturesChange" data-index="{{index}}">
+                    <swiper-item wx:for="{{item.pictures}}" wx:for-item="subItem">
+                        <image src="{{subItem}}" class="slide-image"/>
+                    </swiper-item>
+                </swiper>
+                <view class="hint">
+                    <text>{{roomRecordItems[index].index+1}}/{{item.pictures.length}}</text>
+                </view>
+            </view>
+            <view class="describe {{roomRecordItems[index].ismore?'more':''}}">
+                描述:{{item.describe}}
+                <image wx:if="{{roomRecordItems[index].ismore}}" src='http://h.fengniaowu.com/loan/image/up.png' data-index="{{index}}"
+                       bindtap="hideRoomRecordDescribeMore"/>
+                <image wx:else src='http://h.fengniaowu.com/loan/image/down.png' data-index="{{index}}" bindtap="showRoomRecordDescribeMore"/>
+            </view>
+        </view>
+        <view wx:if="{{roomRecords.data.length==0}}" class="nodata">
+            <image src='http://h.fengniaowu.com/loan/image/nodata0.png' style="width:70px;height:70px;vertical-align:middle"/>
+            <view>没有记录赶快去添加吧</view>
+        </view>
+        <view class="addView">
+            <image src='http://h.fengniaowu.com/loan/image/add3.png' bindtap="addRecord"></image>
+        </view>
+    </view>
+    <view wx:elif="{{tabIndex==1}}" class="roomRecords">
+        <view style="padding: 0 20px;margin-top:20px">
+            <swiper bindchange="doorLockDevicesChange" class="swiperDoorLockDevices" indicator-dots="true"
+                    indicator-color="#B9EAE6" indicator-active-color="#47cabf">
+                <swiper-item wx:for="{{doorLock.devices}}">
+                    <view class="doorLockDevicesView">
+                        <view class="device">设备信息</view>
+                        <view>设备编号：{{item.deviceSn}}</view>
+                        <view>供应厂商：{{item.supplierName}}</view>
+                        <view>安装时间：{{filter.formatYYYMMDD(item.installTime)}}</view>
+                    </view>
+                </swiper-item>
+                <swiper-item>
+                    <view bindtap="addDevice" class="doorLockDevicesView">
+                        <view class="addDoorLockDevices" style="margin-top:38px">
+                            <image src='http://h.fengniaowu.com/loan/image/add2.png'
+                                   style="width:24px;height:24px;vertical-align:middle;margin-right:4px"></image>
+                            添加门锁设备
+                        </view>
+                    </view>
+                </swiper-item>
+            </swiper>
+        </view>
+        <view style="height:15px"></view>
+        <view class="item" wx:for="{{doorLock.doorLockRecords.data}}">
+            <view class="account">
+                <image src="{{item.accountPhotoUrl}}" class="accountPhotoUrl"></image>
+                <text>{{item.accountName}}</text>
+                <span>{{filter.formatYYYMMDD(item.createTime)}}</span>
+            </view>
+            <view class="picture" wx:if="{{item.lockPictures!=null}}">
+                <swiper bindchange="doorLockRecordsPicturesChange" data-index="{{index}}">
+                    <swiper-item wx:for="{{item.lockPictures}}" wx:for-item="subItem">
+                        <image src="{{subItem}}" class="slide-image"/>
+                    </swiper-item>
+                </swiper>
+                <view class="hint">
+                    <text>{{doorLockRecordItems[index].index+1}}/{{item.lockPictures.length}}</text>
+                </view>
+            </view>
+            <view class="describe">
+                记录类型:{{item.recordType=="Open"?"开":"关"}} / 累计次数:{{item.addUpCount}}
+                <image wx:if="{{doorLockRecordItems[index].ismore}}" src='http://h.fengniaowu.com/loan/image/up.png' data-index="{{index}}"
+                       bindtap="hideDoorLockRecordDescribeMore"></image>
+                <image wx:else src='http://h.fengniaowu.com/loan/image/down.png' data-index="{{index}}"
+                       bindtap="showDoorLockRecordDescribeMore"></image>
+            </view>
+            <view wx:if="{{doorLockRecordItems[index].ismore}}" class="describe more" style="margin-top:0">
+                描述:{{item.describe}}
+            </view>
+        </view>
+        <block wx:if="{{doorLock.devices.length>0}}">
+            <view wx:if="{{doorLock.doorLockRecords.data.length==0}}" class="nodata">
+                <image src='http://h.fengniaowu.com/loan/image/nodata1.png' style="width:70px;height:70px;vertical-align:middle"/>
+                <view>没有记录赶快去添加吧</view>
+            </view>
+            <view class="addView">
+                <image src='http://h.fengniaowu.com/loan/image/add3.png' bindtap="addRecord"></image>
+            </view>
+        </block>
+    </view>
+    <view wx:else class="roomRecords">
+        <view style="padding:0 20px;margin-top:20px">
+            <swiper class="swiperDoorLockDevices" bindchange="waterElectricDevicesChange" indicator-dots="true"
+                    indicator-color="#B9EAE6" indicator-active-color="#47cabf">
+                <swiper-item wx:for="{{waterElectric.devices}}">
+                    <view class="doorLockDevicesView">
+                        <view class="device">设备信息</view>
+                        <view>设备编号：{{item.deviceSn}}</view>
+                        <view>供应厂商：{{item.supplierName}}</view>
+                        <view>安装时间：{{ filter.formatYYYMMDD(item.installTime)}}</view>
+                    </view>
+                </swiper-item>
+                <swiper-item>
+                    <view bindtap="addDevice" class="doorLockDevicesView">
+                        <view class="addDoorLockDevices" style="margin-top:38px">
+                            <image src='http://h.fengniaowu.com/loan/image/add2.png'
+                                   style="width:24px;height:24px;vertical-align:middle;margin-right:4px"></image>
+                            添加水电设备
+                        </view>
+                    </view>
+                </swiper-item>
+            </swiper>
+        </view>
+        <view style="height:15px"></view>
+        <view class="item" wx:for="{{waterElectric.waterElectricRecords.data}}">
+            <view class="account">
+                <image src="{{item.accountPhotoUrl}}" class="accountPhotoUrl"></image>
+                <text>{{item.accountName}}</text>
+                <span>{{filter.formatYYYMMDD(item.recordTime)}}</span>
+            </view>
+            <view class="picture" wx:if="{{item.recordPictures!=null}}">
+                <swiper bindchange="waterElectricRecordsPicturesChange" data-index="{{index}}">
+                    <swiper-item wx:for="{{item.recordPictures}}" wx:for-item="subItem">
+                        <image src="{{subItem}}" class="slide-image"/>
+                    </swiper-item>
+                </swiper>
+                <view class="hint">
+                    <text>{{waterElectricRecordItems[index].index+1}}/{{item.recordPictures.length}}</text>
+                </view>
+            </view>
+            <view class="describe">
+                {{filter.formatDeviceType(item.deviceType)}}读数:{{item.currentRead}} /安全范围:{{item.securityRange }}%
+                <image wx:if="{{waterElectricRecordItems[index].ismore}}" src='http://h.fengniaowu.com/loan/image/up.png'
+                       style="width:24px;height:24px;vertical-align:middle" data-index="{{index}}"
+                       bindtap="hideWaterElectricRecordDescribeMore"></image>
+                <image wx:else src='http://h.fengniaowu.com/loan/image/down.png' style="width:24px;height:24px;vertical-align:middle"
+                       data-index="{{index}}"
+                       bindtap="showWaterElectricRecordDescribeMore"></image>
+            </view>
+            <view wx:if="{{waterElectricRecordItems[index].ismore}}" class="describe more" style="margin-top:0">
+                描述:{{item.describe}}
+            </view>
+        </view>
+        <view wx:if="{{waterElectric.devices.length>0}}">
+            <view wx:if="{{waterElectric.waterElectricRecords.data.length==0}}" class="nodata">
+                <image src='http://h.fengniaowu.com/loan/image/nodata2.png' style="width:70px;height:70px;vertical-align:middle"/>
+                <view>没有记录赶快去添加吧</view>
+            </view>
+            <view class="addView">
+                <image src='http://h.fengniaowu.com/loan/image/add3.png' bindtap="addRecord"></image>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,58 @@
+<!-- showToast -->
+<import src="../../utils/showToast.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}"/>
+<!--pages/user/user.wxml-->
+<view class="mui-content" style="background-color:#ffffff">
+    <view wx:if="{{hasInfo}}" class="step0" style="padding: 0 30px">
+        <image src="http://h.fengniaowu.com/loan/image/editor.png" class="editor" bindtap="bindEditor"/>
+        <view style="height: 50px"></view>
+        <view style="text-align:center">
+            <image class="photo" src="{{accountPhotoUrl}}" bindtap="bindChooseImage"/>
+        </view>
+        <view style="margin-top:30px;height:30px;line-height:30px;font-size:16px;color:#646464;text-align:left">
+            真实姓名<span>{{realName}}</span>
+        </view>
+        <view style="margin-top:10px;height:30px;line-height:30px;font-size:16px;color:#646464;text-align:left">
+            身份证号 <span>{{credentialNo}}</span>
+        </view>
+        <view style="margin-top:10px;height:30px;line-height:30px;font-size:16px;color:#646464;text-align:left">
+            目前职位<span>{{positionName}}</span>
+        </view>
+        <view style="height: 40px">
+        </view>
+    </view>
+    <view wx:else class="step1" style="padding: 0 30px">
+        <view style="height: 50px">
+        </view>
+        <view style="text-align:center">
+            <image class="photo" src="{{accountPhotoUrl}}" bindtap="bindChooseImage"/>
+        </view>
+        <view style="margin-top:30px;height:45px;line-height:50px;font-size:16px;color:#646464;text-align:left;border-bottom:1px solid #e9e9e9;position:relative">
+            真实姓名
+            <view class="viewInput">
+                <input type="text" placeholder="请输入姓名" maxlength="10" value="{{realName}}" data-key="realName"
+                       bindinput="bindKeyInput"/>
+            </view>
+        </view>
+        <view style="margin-top:10px;height:45px;line-height:50px;font-size:16px;color:#646464;text-align:left;border-bottom:1px solid #e9e9e9;position:relative">
+            身份证号
+            <view class="viewInput">
+                <input type="text" placeholder="请输入证件号" maxlength="18" value="{{credentialNo}}" data-key="credentialNo"
+                       bindinput="bindKeyInput"/>
+            </view>
+        </view>
+        <view style="margin-top:10px;height:45px;line-height:50px;font-size:16px;color:#646464;text-align:left;border-bottom:1px solid #e9e9e9;position:relative">
+            目前职位
+            <picker bindchange="bindPositionChange" range="{{positions}}" range-key="{{'positionName'}}"  value="{{index}}" style="padding-right:30px">
+                {{positionId==""?"请选择职位": positionName}}  <image src="http://h.fengniaowu.com/loan/image/jiantou.png" class="jiantou"></image>
+            </picker>
+
+        </view>
+        <view style="margin-top:40px;font-size:16px;text-align:center">
+            <button class="btnActive"
+                    style="background:#47cabf;border-radius:44px;height:44px;color:#ffffff;font-size:18px;width:100%;border:none"
+                    bindtap="bindUpdateLoanInAccountInfo">确定
+            </button>
+        </view>
+    </view>
+</view>

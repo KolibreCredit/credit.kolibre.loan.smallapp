@@ -1,0 +1,56 @@
+/* pages/user/index.wxss */
+page {
+    background-color: #f8f8f8;
+}
+.item {
+    font-size: 16px;
+    color: #646464;
+    border-bottom: 1px solid #e8e8e8;
+    height: 54px;
+    line-height: 54px;
+    position: relative;
+}
+.jiantou{
+    width: 24px;
+    height: 24px;
+    top: 16px;
+    right: 23px;
+    position: absolute;
+    cursor: pointer;
+}
+.message {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 15px;
+    left: 5px;
+}
+
+.userInfo {
+    top: 40px;
+    width: 100%;
+    position: absolute;
+}
+
+.accountPhoto {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+}
+.realName {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ffffff;
+}
+.positionName {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 0 20px;
+    border: 1px solid #B1D3D5;
+    height: 23px;
+    line-height: 23px;
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 100px;
+}

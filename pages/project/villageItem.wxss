@@ -1,0 +1,148 @@
+/* pages/project/villageItem.wxss */
+page {
+    background-color: #f8f8f8;
+}
+.add {
+    position: absolute;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    top: 18px;
+}
+
+.riskLables {
+    margin-top: 5px;
+    background-color: #FFFFFF;
+}
+
+.riskLables .itemLables {
+    width: auto;
+    border-radius: 100px;
+    float: left;
+    padding: 0 15px;
+    margin-top: 15px;
+    margin-right: 10px;
+    height: 34px;
+    line-height: 34px;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    font-size: 14px;
+    color: #666666;
+}
+
+.riskLables .active {
+    background: #47cabf;
+    border: 1px solid #47cabf;
+    color: #ffffff;
+}
+
+.addItemRiskLable {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+}
+
+.radio {
+    width: 47%;
+    height: 20px;
+    line-height: 20px;
+    float: left;
+    margin-top: 20px;
+    color: #666666;
+}
+
+.radio radio {
+    display: none;
+}
+
+.radio image {
+    width: 20px;
+    height: 20px;
+    vertical-align: bottom;
+}
+
+picker {
+    display: inline-block;
+    float: right;
+    font-size: 16px;
+    color: #000000;
+    position: relative;
+}
+
+.picker {
+    padding-right: 28px;
+}
+
+picker image {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 0;
+    top: 18px;
+}
+
+.scroll-view_H {
+    white-space: nowrap;
+}
+
+.scroll-view-item_H {
+    display: inline-block;
+    width: 120px;
+    height: 80px;
+    margin-top: 10px;
+    margin-right: 20px;
+    border-radius: 4px;
+    border: 1px solid #c0ccda;
+    position: relative;
+}
+
+.scroll-view-item_H image {
+    width: 100%;
+    height: 80px;
+    border-radius: 4px;
+}
+
+.scroll-view-item_H .delete{
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: -8px;
+    right: -5px;
+}
+
+.chooseImage {
+    background: rgba(71, 202, 191, 0.10);
+    border: 1px dotted #47cabf;
+}
+
+.chooseImage image {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 28px;
+    left: 48px;
+}
+
+/*
+.bc_green{
+    background-color:green;
+}
+
+.bc_red{
+    background-color: red;
+}
+
+.bc_yellow{
+    background-color: yellow;
+}
+
+.bc_blue{
+    background-color: blue;
+}*/

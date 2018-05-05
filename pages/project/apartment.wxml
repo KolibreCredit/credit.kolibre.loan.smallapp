@@ -1,0 +1,59 @@
+<!-- showToast -->
+<import src="../../utils/showToast.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}"/>
+<!--pages/project/apartment.wxml-->
+<view class="mui-content">
+    <view style="height:100px;position:relative">
+        <image src="http://h.fengniaowu.com/loan/image/bg3.jpg" style="width: 100%;height:100px"></image>
+        <image src="http://h.fengniaowu.com/loan/image/icon1.png" style="width:24px;height:24px" class="icon"></image>
+        <text class="villageName">{{ villageApartment.apartmentName }}</text>
+        <text class="roomCount">共{{villageApartment.roomCount }}间房</text>
+        <view class="chooseApartment" bindtap="showApartments">
+            切换公寓<image src="http://h.fengniaowu.com/loan/image/qiehuan.png" style="width:12px;height:12px;margin-left:5px"></image>
+        </view>
+    </view>
+    <view style="height:50px;background-color:#FFFFFF;padding:0 20px">
+        <view class="notSecurityRoomCount {{roomType?'':'active'}}" bindtap="tabRoomType" data-key="false">
+            <view style="border:2px solid #ff6260;width:12px;height:12px;border-radius:100%;display:inline-block"></view>
+            核验房间({{villageApartment.notSecurityRoomCount}})
+        </view>
+        <view class="securityRoomCount {{roomType?'active':''}}" bindtap="tabRoomType" data-key="true">
+            <view style="border:2px solid #7ed321;width:12px;height:12px;border-radius:100%;display:inline-block"></view>
+            安全房间({{villageApartment.securityRoomCount}})
+        </view>
+    </view>
+    <view style="padding:0 20px">
+        <view wx:for="{{roomloanInfoList.data}}" class="itemApartment" data-index="{{index}}" bindtap="viewDetail">
+            <view>
+                <text style="font-size:17px;color:#ff6260;float:left">{{item.roomNumber }}</text>
+                <text style="font-size:14px;color:#41c1a4;float:right" wx:if="{{item.roomState=='LongRent'}}">长租</text>
+                <text style="font-size:14px;color:#ff8c14;float:right" wx:elif="{{item.roomState=='ShortRent'}}">短租</text>
+                <text style="font-size:14px;color:#0FA0F7;float:right" wx:elif="{{item.roomState=='DailyRent'}}">日租</text>
+                <text style="font-size:14px;color:#9facb3;float:right" wx:elif="{{item.roomState=='Vacancy'}}">空置</text>
+                <text style="font-size:14px;color:#779BBD;float:right" wx:else>其他</text>
+            </view>
+            <view style="font-size:14px;color:#4e4e4e;clear:both;line-height:30px">
+                {{item.tenantName==null?"":item.tenantName}}
+            </view>
+        </view>
+    </view>
+    <view class="choose" wx:if="{{isApartments}}">
+        <view class="tenancy">
+            <view class="section__title">
+                请选择公寓
+                <image src='http://h.fengniaowu.com/loan/image/close.png' class="close" bindtap="hideApartments"></image>
+            </view>
+            <scroll-view scroll-y="true" style="height:330px">
+                <view class="scroll-view-item" wx:for="{{apartmentList}}">
+                    {{item.apartmentName}}
+                    <image wx:if="{{item.apartmentId==apartmentId2}}" src="http://h.fengniaowu.com/loan/image/checks.png"/>
+                    <image wx:else src="http://h.fengniaowu.com/loan/image/check.png" data-apartmentId="{{item.apartmentId}}"
+                           bindtap="pickApartment"/>
+                </view>
+            </scroll-view>
+            <view style="background:#47cabf;width:100%;height:50px;line-height: 50px;font-size:16px;color:#ffffff;text-align:center"  bindtap="finishApartment">
+                确定
+            </view>
+        </view>
+    </view>
+</view>

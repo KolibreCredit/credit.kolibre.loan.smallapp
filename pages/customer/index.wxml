@@ -1,0 +1,22 @@
+<!-- showToast -->
+<import src="../../utils/showToast.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}"/>
+<!-- filter -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<!--index.wxml-->
+<view class="mui-content">
+    <view style='text-align:center'>
+        <image src='http://h.fengniaowu.com/loan/image/logo.png' style='width:375px' mode='aspectFit'></image>
+    </view>
+    <view style='padding:0 10px'>
+        <view class='list'>
+            <view class='item' wx:for="{{list}}">
+                <image class='logo' src='{{filter.domainToLogo(item.license)}}'/>
+                <image wx:if="{{item.isHasRisk}}" src='http://h.fengniaowu.com/loan/image/fengxian.png' class='hint1' data-tenancyId="{{item.tenancyId}}" bindtap="bindItem"/>
+                <image wx:else src='http://h.fengniaowu.com/loan/image/anquan.png' class='hint2' data-tenancyId="{{item.tenancyId}}" bindtap="bindItem"/>
+                <image src='http://h.fengniaowu.com/loan/image/jiantou.png' class='jiantou' data-tenancyId="{{item.tenancyId}}"  bindtap="bindView"/>
+            </view>
+        </view>
+    </view>
+    <view style="height:20px"></view>
+</view>

@@ -1,0 +1,74 @@
+<!-- showToast -->
+<import src="../../utils/showToast.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}"/>
+<!--pages/customer/riskItem.wxml-->
+<view class='mui-content'>
+    <view style="padding: 0 20px;background-color:#FFFFFF">
+        <view style="height: 60px;line-height:60px;font-size:16px;color:#646464;border-bottom:1px solid #e9e9e9;position:relative">
+            {{sceneryTypeName}}
+            <image class="add" src='http://h.fengniaowu.com/loan/image/add2.png' bindtap="showItemSceneryType"></image>
+        </view>
+        <view class="riskLables">
+            <view class="itemLables {{index==sceneryIndex?'active':''}}" data-key="{{index}}" wx:for="{{sceneryTypes}}"
+                  bindtap="selectSceneryType">
+                {{item.sceneryTypeName}}
+            </view>
+            <view style="clear:both;height:15px"></view>
+        </view>
+    </view>
+    <view style="background-color: #FFFFFF;padding:20px;margin-top:10px">
+        <view style="height:50px;line-height:50px;font-size:16px;color:#646464">
+            全景描述
+        </view>
+        <textarea placeholder="请输入描述内容" style="border:1px solid #e9e9e9;width:95%;height:98px;padding: 5px"
+                  data-key="describe" value="{{sceneryDescribe}}" bindinput="bindKeyInput"/>
+        <view style="margin-top:10px;font-size:16px;color:#646464">
+            相关资料<span style="color:#B2B2B2">（不超过5张）</span>
+        </view>
+        <scroll-view class="scroll-view_H" scroll-x="true" style="width:100%">
+            <block wx:for="{{sceneryPictures}}">
+                <view class="scroll-view-item_H">
+                    <image src="{{item}}"></image>
+                    <image src="http://h.fengniaowu.com/loan/image/delete.png" class="delete" data-key="{{index}}"
+                           bindtap="bindDeletePictures"></image>
+                </view>
+            </block>
+            <view class="scroll-view-item_H chooseImage" bindtap="bindAddPictures">
+                <image src="http://h.fengniaowu.com/loan/image/add2.png"></image>
+            </view>
+        </scroll-view>
+    </view>
+    <view style="background-color: #FFFFFF;height:40px"></view>
+    <view style="padding:0 20px;background-color: #FFFFFF;">
+        <button wx:if="{{isUpdate}}" class="btnActive"
+                style="background:#47cabf;border-radius:40px;height:40px;line-height: 40px;color:#ffffff;font-size:18px;width:100%;border:none;"
+                bindtap="updateScenery">确认修改
+        </button>
+        <button wx:else class="btnActive"
+                style="background:#47cabf;border-radius:40px;height:40px;line-height: 40px;color:#ffffff;font-size:18px;width:100%;border:none;"
+                bindtap="createScenery">确认并提交
+        </button>
+    </view>
+    <view style="background-color: #FFFFFF;height:20px"></view>
+    <view class="addItemRiskLable" wx:if="{{isSceneryType}}">
+        <view style="background:#ffffff;box-shadow:0 15px 25px 0 rgba(0,0,0,0.20);border-radius:6px;width:100%;height:238px;padding:0 20px">
+            <view style="text-align:center;margin-top:30px;font-size:18px;color:#646464">
+                添加全景类型
+            </view>
+            <view style="margin-top:50px;border-bottom:1px solid #e9e9e9;padding-bottom:5px">
+                <input type="text" placeholder="请输入全景类型名称" style="font-size:16px;color:#99999" maxlength="20"
+                       data-key="sceneryType" bindinput="bindKeyInput"/>
+            </view>
+            <view style="margin-top: 40px">
+                <view style="border:1px solid #47cabf;text-align:center;border-radius:100px;width:118px;height:38px;line-height: 38px;display: inline-block;font-size:18px;color:#47cabf"
+                      bindtap="hideItemSceneryType">
+                    取消
+                </view>
+                <button class="btnActive"
+                        style="background:#47cabf;border-radius:40px;height:40px;line-height: 40px;color:#ffffff;font-size:18px;width:118px;border:none;float:right"
+                        bindtap="createSceneryType">确定
+                </button>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,154 @@
+var filter = {
+  getDate: function (date, splitStr) {
+    return date + " " + splitStr;
+  },
+  domainToLogo: function (domain) {
+    switch (domain) {
+      case "@mozu.com":
+        return "http://h.fengniaowu.com/loan/image/logo/mozu.png";
+      case "@qingnianhui.com":
+        return "http://h.fengniaowu.com/loan/image/logo/qingnianhui.png";
+      case "@qingcheng.com":
+        return "http://h.fengniaowu.com/loan/image/logo/qingcheng.png";
+      case "@yuanlai.com":
+        return "http://h.fengniaowu.com/loan/image/logo/yuanlai.png";
+      case "@kangdou.com":
+        return "http://h.fengniaowu.com/loan/image/logo/kangdou.png";
+      case "@yuju.com":
+        return "http://h.fengniaowu.com/loan/image/logo/yuju.png";
+      case "@meiwo.com":
+        return "http://h.fengniaowu.com/loan/image/logo/meiwo.png";
+      case "@test.com":
+        return "http://h.fengniaowu.com/loan/image/logo/test.png";
+      case "@yizhu.com":
+        return "http://h.fengniaowu.com/loan/image/logo/yizhu.png";
+      case "@tangyuan.com":
+        return "http://h.fengniaowu.com/loan/image/logo/tangyuan.png";
+      case "@nexhome.com":
+        return "http://h.fengniaowu.com/loan/image/logo/nexhome.png";
+      case "@yifangtiandi.com":
+        return "http://h.fengniaowu.com/loan/image/logo/yifangtiandi.png";
+      case "@mikongjian.com":
+        return "http://h.fengniaowu.com/loan/image/logo/mikongjian.png";
+      case "@yuju.com":
+        return "http://h.fengniaowu.com/loan/image/logo/yuju.png";
+      case "@suonatel.com":
+        return "http://h.fengniaowu.com/loan/image/logo/suonatel.png";
+      default:
+        return "http://h.fengniaowu.com/loan/image/logo/fengniaowu.png";
+    }
+  },
+  domainToLogo2: function (domain) {
+  switch (domain) {
+        case "@mozu.com":
+          return "http://h.fengniaowu.com/loan/image/logo2/mozu.png";
+        case "@qingnianhui.com":
+          return "http://h.fengniaowu.com/loan/image/logo2/qingnianhui.png";
+        case "@qingcheng.com":
+          return "http://h.fengniaowu.com/loan/image/logo2/qingcheng.png";
+        case "@yuanlai.com":
+          return "http://h.fengniaowu.com/loan/image/logo2/yuanlai.png";
+        case "@kangdou.com":
+          return "http://h.fengniaowu.com/loan/image/logo2/kangdou.png";
+        case "@yuju.com":
+          return "http://h.fengniaowu.com/loan/image/logo2/yuju.png";
+        case "@meiwo.com":
+          return "http://h.fengniaowu.com/loan/image/logo2/meiwo.png";
+        case "@test.com":
+          return "http://h.fengniaowu.com/loan/image/logo2/test.png";
+        case "@yizhu.com":
+          return "http://h.fengniaowu.com/loan/image/logo2/yizhu.png";
+        case "@tangyuan.com":
+          return "http://h.fengniaowu.com/loan/image/logo2/tangyuan.png";
+        case "@nexhome.com":
+          return "http://h.fengniaowu.com/loan/image/logo2/nexhome.png";
+        case "@yifangtiandi.com":
+          return "http://h.fengniaowu.com/loan/image/logo2/yifangtiandi.png";
+        case "@mikongjian.com":
+          return "http://h.fengniaowu.com/loan/image/logo2/mikongjian.png";
+        case "@yuju.com":
+          return "http://h.fengniaowu.com/loan/image/logo2/yuju.png";
+        case "@suonatel.com":
+          return "http://h.fengniaowu.com/loan/image/logo2/suonatel.png";
+        default:
+          return "http://h.fengniaowu.com/loan/image/logo2/fengniaowu.png";
+      }
+     },
+   domainToLogo3: function (domain) {
+       switch (domain) {
+             case "@mozu.com":
+               return "http://h.fengniaowu.com/loan/image/logo3/mozu.png";
+             case "@qingnianhui.com":
+               return "http://h.fengniaowu.com/loan/image/logo3/qingnianhui.png";
+             case "@qingcheng.com":
+               return "http://h.fengniaowu.com/loan/image/logo3/qingcheng.png";
+             case "@yuanlai.com":
+               return "http://h.fengniaowu.com/loan/image/logo3/yuanlai.png";
+             case "@kangdou.com":
+               return "http://h.fengniaowu.com/loan/image/logo3/kangdou.png";
+             case "@yuju.com":
+               return "http://h.fengniaowu.com/loan/image/logo3/yuju.png";
+             case "@meiwo.com":
+               return "http://h.fengniaowu.com/loan/image/logo3/meiwo.png";
+             case "@test.com":
+               return "http://h.fengniaowu.com/loan/image/logo3/test.png";
+             case "@yizhu.com":
+               return "http://h.fengniaowu.com/loan/image/logo3/yizhu.png";
+             case "@tangyuan.com":
+               return "http://h.fengniaowu.com/loan/image/logo3/tangyuan.png";
+             case "@nexhome.com":
+               return "http://h.fengniaowu.com/loan/image/logo3/nexhome.png";
+             case "@yifangtiandi.com":
+               return "http://h.fengniaowu.com/loan/image/logo3/yifangtiandi.png";
+             case "@mikongjian.com":
+               return "http://h.fengniaowu.com/loan/image/logo3/mikongjian.png";
+             case "@yuju.com":
+               return "http://h.fengniaowu.com/loan/image/logo3/yuju.png";
+             case "@suonatel.com":
+               return "http://h.fengniaowu.com/loan/image/logo3/suonatel.png";
+             default:
+               return "http://h.fengniaowu.com/loan/image/logo3/fengniaowu.png";
+           }
+          },
+          formatYYYMMDD:function (date) {
+            return date.substring(0,10);
+          },
+         formatDeviceType:function (deviceType) {
+              switch (deviceType) {
+                case "ColdWaterMeter":
+                    return "冷水";
+                case "HotWaterMeter":
+                     return "热水";
+                case "ElectricMeter":
+                        return "电表";
+                case "GasMeter":
+                     return "气表";
+                default:
+                    return "未知设备";
+          }
+        },
+        formatRoomState:function (roomState) {
+                      switch (roomState) {
+                        case "Vacancy":
+                            return "空置";
+                        case "LongRent":
+                             return "长租";
+                        case "ShortRent":
+                                return "短租";
+                        case "DailyRent":
+                             return "日租";
+                        default:
+                            return "其他";
+                  }
+        }
+    }
+
+module.exports = {
+  getDate:filter.getDate,
+  domainToLogo:filter.domainToLogo,
+  domainToLogo2:filter.domainToLogo2,
+  domainToLogo3:filter.domainToLogo3,
+  formatYYYMMDD:filter.formatYYYMMDD,
+  formatDeviceType:filter.formatDeviceType,
+  formatRoomState:filter.formatRoomState
+}

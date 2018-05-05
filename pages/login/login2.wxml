@@ -1,0 +1,36 @@
+<!-- showToast -->
+<import src="../../utils/showToast.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}"/>
+<!--pages/login/login2.wxml-->
+<view class="mui-content" style="background:none">
+    <view style='height:50px'></view>
+    <view style="padding-left:20px;padding-right:20px">
+        <view style="font-size:28px;color:#FFFFFF;height:30px;line-height:30px">
+            手机验证
+        </view>
+        <view style="font-size:16px;color:#FFFFFF;height:22px;line-height:22px;margin-top:16px;position:relative">
+            <span>{{cellphone}}</span><span style="position: absolute;right:10px;color:#47cabf" bindtap="sendCaptcha">{{captchaText}}</span>
+        </view>
+        <view style="border-bottom:1px solid #d8d8d8;margin-top:20px">
+            <input type="text" placeholder="请输入验证码" maxlength="6" style="letter-spacing:2px;color:#FFFFFF"
+                   bindinput="bindKeyInput"/>
+        </view>
+        <view wx:if="{{isVoice}}" style="font-size:12px;color:#FFFFFF;margin-top:15px" bindtap="voiceCallCaptcha">
+            未收到短信验证，试试<span style="color:#47cabf;margin-left:5px">语音验证</span>
+        </view>
+        <view style="text-align:center;margin-top:50px">
+            <button class="btnActive"
+                    style="background:#47cabf;;border-radius:44px;height:44px;color:#ffffff;font-size:18px;width:100%;border:none"
+                    bindtap="loginByCaptcha">注册/登录
+            </button>
+        </view>
+    </view>
+    <view class="msg-post" wx:if="{{isPost}}">
+        <view style="text-align:center">
+            <image src="http://h.fengniaowu.com/loan/image/loading.gif" style="width:62px;height:62px"/>
+        </view>
+        <view style="font-size:16px">
+            正在登录请等待...
+        </view>
+    </view>
+</view>

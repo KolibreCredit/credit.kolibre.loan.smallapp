@@ -1,0 +1,47 @@
+<!-- showToast -->
+<import src="../../utils/showToast.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}"/>
+<!--pages/user/index.wxml-->
+<view class="mui-content" style="background-color:#ffffff">
+    <view style="text-align:center;position:relative">
+        <image src="http://h.fengniaowu.com/loan/image/user.png" style="width:100%;height:238px"/>
+        <view class="userInfo" wx:if="{{user.hasInfo}}">
+            <image  src="{{user.accountPhotoUrl}}" class="accountPhoto"/>
+            <view class="realName">{{user.realName}}</view>
+            <view class="positionName">{{user.positionName}}</view>
+        </view>
+        <view wx:else class="userInfo">
+              <image src="http://h.fengniaowu.com/loan/image/accountPhoto.png" class="accountPhoto"/>
+        </view>
+    </view>
+    <view style="height:10px"></view>
+    <view style="padding-left:20px">
+        <navigator url="/pages/message/index">
+            <view class="item">
+                <image src='http://h.fengniaowu.com/loan/image/message.png' class="message"/>
+                <span style="margin-left:35px">消息管理</span>
+                <span style="float:right;margin-right:50px">5</span>
+                <image src='http://h.fengniaowu.com/loan/image/jiantou.png' class='jiantou'/>
+            </view>
+        </navigator>
+        <navigator url="/pages/user/user">
+            <view class="item">
+                <image src='http://h.fengniaowu.com/loan/image/user1.png' class="message"/>
+                <span style="margin-left:35px">个人信息</span>
+                <span  wx:if="{{!user.hasInfo}}" style="float:right;margin-right:50px">待完善</span>
+                <image src='http://h.fengniaowu.com/loan/image/jiantou.png' class='jiantou'/>
+            </view>
+        </navigator>
+        <navigator url="/pages/login/resetPassword">
+            <view class="item" style="border: none">
+                <image src='http://h.fengniaowu.com/loan/image/password.png' class="message"/>
+                <span style="margin-left:35px">修改密码</span>
+                <image src='http://h.fengniaowu.com/loan/image/jiantou.png' class='jiantou'/>
+            </view>
+        </navigator>
+    </view>
+    <view style="background-color: #f8f8f8;height:10px"></view>
+    <view class="item" style="border: none;text-align:center" bindtap="loginOut">
+        退出登录
+    </view>
+</view>

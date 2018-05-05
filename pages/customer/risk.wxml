@@ -1,0 +1,90 @@
+<!-- showToast -->
+<import src="../../utils/showToast.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}"/>
+<!-- filter -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<!--pages/customer/risk.wxml-->
+<view class='mui-content'>
+    <view class='head'>
+        <image wx:if="{{tenancyResponse.isHasRisk}}" src='http://h.fengniaowu.com/loan/image/fengxian1.png' mode='scaleToFill'
+               class='fengxian'></image>
+        <image wx:else src='http://h.fengniaowu.com/loan/image/anquan1.png' mode='scaleToFill' class='anquan'></image>
+        <view class="logo">
+            <image src="{{filter.domainToLogo2(tenancyResponse.license)}}" mode='scaleToFill'></image>
+        </view>
+        <view class='add'>
+            <image src='http://h.fengniaowu.com/loan/image/add.png' bindtap="addRisk"></image>
+        </view>
+    </view>
+    <view class='item' wx:for="{{riskResponses.data}}">
+        <view style="height:24px;line-height:24px;font-size:16px;color:#646464">
+            <image src="http://h.fengniaowu.com/loan/image/risk.png"
+                   style="width:18px;height:18px;margin-right:10px;vertical-align:middle"></image>
+            <span>{{item.lableName}}</span>
+            <view style="float:right">
+                <span>{{filter.formatYYYMMDD(item.createTime)}}</span>
+                <image wx:if="{{riskItems[index]}}" src="http://h.fengniaowu.com/loan/image/up.png"
+                       style="width:24px;height:24px;vertical-align:bottom;margin-left:10px"  data-index="{{index}}" bindtap="hideRiskDescribe"></image>
+                <image wx:else src="http://h.fengniaowu.com/loan/image/down.png"
+                       style="width:24px;height:24px;vertical-align:bottom;margin-left:10px" data-index="{{index}}" bindtap="showRiskDescribe"></image>
+            </view>
+        </view>
+        <view class="riskGrade">
+            <view class="itemRiskGrade" style="border-bottom:4px solid #FDC90E">
+                <view wx:if="{{item.riskGrade==1}}" style="background:rgba(253,201,14,0.1);color:#fbc400">
+                    问题提示
+                </view>
+                <image wx:if="{{item.riskGrade==1}}" src="http://h.fengniaowu.com/loan/image/riskGrade/1.png"></image>
+            </view>
+            <view class="itemRiskGrade" wx:if="{{item.riskGrade>1}}" style="border-bottom:4px solid #FDAF23">
+                <view wx:if="{{item.riskGrade==2}}" style="background:rgba(253,175,35,0.1);color:#fdaf23">
+                    风险提示
+                </view>
+                <image wx:if="{{item.riskGrade==2}}" src="http://h.fengniaowu.com/loan/image/riskGrade/2.png"></image>
+            </view>
+            <view class="itemRiskGrade" wx:if="{{item.riskGrade>2}}" style="border-bottom:4px solid #FE9537">
+                <view wx:if="{{item.riskGrade==3}}" style="background:rgba(254,149,55,0.1);color:#fe9537">
+                    风险评估
+                </view>
+                <image wx:if="{{item.riskGrade==3}}" src="http://h.fengniaowu.com/loan/image/riskGrade/3.png"></image>
+            </view>
+            <view class="itemRiskGrade" wx:if="{{item.riskGrade>3}}" style="border-bottom:4px solid #FF7B4C">
+                <view wx:if="{{item.riskGrade==4}}" style="background:rgba(255,123,76,0.1);color:#ff7b4c">
+                    风险恶化
+                </view>
+                <image wx:if="{{item.riskGrade==4}}" src="http://h.fengniaowu.com/loan/image/riskGrade/4.png"></image>
+            </view>
+            <view class="itemRiskGrade" wx:if="{{item.riskGrade>4}}" style="border-bottom:4px solid #FF6260">
+                <view wx:if="{{item.riskGrade==5}}" style="background:rgba(255,98,96,0.1);color:#FF6260">
+                    风险拒绝
+                </view>
+                <image wx:if="{{item.riskGrade==5}}" src="http://h.fengniaowu.com/loan/image/riskGrade/5.png"></image>
+            </view>
+        </view>
+        <view style="clear:both"></view>
+        <block wx:if="{{riskItems[index]}}">
+            <view style="font-size:16px;color:#646464;margin-top:20px">
+                描述
+            </view>
+            <view style='font-size:14px;color:#999999;margin-top:10px'>
+                {{item.riskDescribe}}
+            </view>
+            <view style='font-size:16px;color:#646464;margin-top:20px'>
+                相关资料
+            </view>
+            <view style='font-size:14px;color:#999999;margin-top:10px'>
+                <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
+                    <block wx:for="{{item.relevantPictures}}" wx:for-item="subItem">
+                        <image class="scroll-view-item_H" src="{{subItem}}"></image>
+                    </block>
+                </scroll-view>
+            </view>
+        </block>
+    </view>
+    <view wx:if="{{riskResponses.data.length==0}}" style="text-align:center;padding-top:140px">
+        <image src='http://h.fengniaowu.com/loan/image/anquan2.png' style="width: 70px;height:70px"></image>
+        <view style="font-size:16px;color:#999999;text-align:center;margin-top:20px">
+            暂无风险提示记录
+        </view>
+    </view>
+</view>

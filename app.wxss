@@ -1,0 +1,54 @@
+/**app.wxss**/
+@import "utils/showToast.wxss";
+page {
+    margin: 0;
+    padding: 0;
+}
+
+view {
+    box-sizing: border-box;
+}
+
+.mui-content {
+    font-family: 'HiraginoSansGB W3', 'Microsoft YaHei', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+.btnActive {
+    border: none;
+}
+
+.btnActive:active {
+    background: #0E998D !important;
+}
+
+button {
+    padding: 0;
+}
+
+.msg-post {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    color: white;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+}
+
+.show-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+}

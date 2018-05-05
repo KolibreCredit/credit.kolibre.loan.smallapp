@@ -1,0 +1,52 @@
+<!-- showToast -->
+<import src="../../utils/showToast.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}"/>
+<!--pages/project/device.wxml-->
+<view class="mui-content">
+    <view wx:if="{{tabIndex==2}}" class="row">
+        设备类型
+        <view class="viewInput">
+            <picker bindchange="pickerDeviceTypeChange" value="{{index}}" range="{{deviceTypes}}" range-key="desc">
+                <view class="picker">
+                    {{deviceTypes[deviceTypeIndex].desc}}
+                    <image src="http://h.fengniaowu.com/loan/image/jiantou.png" class="jiantou"></image>
+                </view>
+            </picker>
+        </view>
+    </view>
+    <view class="row">
+        是否智能设备
+        <view class="viewInput">
+            {{deviceModelType=="Intelligence"?"是":"否"}}<switch bindchange="deviceModelTypeChange" type="switch"/>
+        </view>
+    </view>
+    <view class="row">
+        编号
+        <view class="viewInput">
+            <input type="text" placeholder="请填写设备编号" maxlength="30" value="{{deviceSn}}" data-key="deviceSn"
+                   bindinput="bindKeyInput"/>
+        </view>
+    </view>
+    <view class="row">
+        供应商名称
+        <view class="viewInput">
+            <input type="text" placeholder="请输入供应商名称" maxlength="30" value="{{supplierName}}" data-key="supplierName"
+                   bindinput="bindKeyInput"/>
+        </view>
+    </view>
+    <view class="row">
+        安装时间
+        <view class="viewInput">
+            <picker mode="date" value="{{installTime}}" bindchange="installTimeDateChange">
+                {{installTime}}
+                <image src="http://h.fengniaowu.com/loan/image/jiantou.png" class="jiantou"></image>
+            </picker>
+        </view>
+    </view>
+    <view style="padding: 0 20px;margin-top:40px">
+        <button class="btnActive"
+                style="background:#47cabf;border-radius:40px;height:40px;line-height: 40px;color:#ffffff;font-size:18px;width:100%;border:none;"
+                bindtap="createRoomDevice">确认
+        </button>
+    </view>
+</view>

@@ -1,0 +1,127 @@
+/* pages/project/apartment.wxss */
+page {
+    background-color: #f8f8f8;
+}
+
+.icon {
+    position: absolute;
+    left: 22px;
+    top: 30px;
+}
+
+.villageName {
+    position: absolute;
+    left: 54px;
+    top: 30px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.roomCount {
+    position: absolute;
+    left: 54px;
+    top: 64px;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.chooseApartment {
+    background: #47cabf;
+    border-radius: 15px 0 0 15px;
+    width: 117px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    font-size: 14px;
+    color: #ffffff;
+    display: inline-block;
+}
+
+.notSecurityRoomCount {
+    width: 48%;
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 16px;
+    color: #646464;
+}
+
+.securityRoomCount {
+    width: 48%;
+    float: right;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 16px;
+    color: #646464;
+}
+
+.active {
+    border-bottom: 2px solid #47cabf;
+}
+
+.itemApartment {
+    background: #ffffff;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    width: 48%;
+    height: 78px;
+    float: left;
+    margin-top: 10px;
+    padding: 15px;
+}
+
+.itemApartment:nth-child(even) {
+    float: right;
+}
+
+.choose {
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.tenancy {
+    height: 430px;
+    width: 100%;
+    background: #ffffff;
+    position: absolute;
+    bottom: 0;
+}
+.section__title {
+    font-size: 16px;
+    color: #666666;
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+    padding-left: 20px;
+}
+.section__title image {
+    width: 24px;
+    height: 24px;
+    top: 13px;
+    right: 20px;
+    position: absolute;
+}
+.scroll-view-item {
+    border-top: 1px solid #f1f1f1;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    color: #646464;
+    position: relative;
+    padding-left: 20px;
+}
+.scroll-view-item image {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 20px;
+    top: 13px;
+}

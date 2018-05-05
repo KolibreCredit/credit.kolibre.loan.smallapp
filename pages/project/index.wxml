@@ -1,0 +1,55 @@
+<!-- showToast -->
+<import src="../../utils/showToast.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}"/>
+<!-- filter -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<!--pages/project/index.wxml-->
+<view class="mui-content">
+    <view class="head">
+        <image src='http://h.fengniaowu.com/loan/image/head.jpg' style="width:100%;height:100px" mode='aspectFit'></image>
+        <image src="{{filter.domainToLogo3(tenancyItem.license)}}" class="logo"></image>
+        <view class="qiehuan" bindtap="showTenancys">
+            切换
+            <image src='http://h.fengniaowu.com/loan/image/qiehuan.png' style="width:12px;height:12px"></image>
+        </view>
+    </view>
+    <view wx:for="{{villageAparment.data}}" class="villageAparmentItem">
+        <view style="background:#ecf9f8;width:100%;height:90px;position:relative">
+            <image src='http://h.fengniaowu.com/loan/image/aparment.png' class="aparment"></image>
+            <view class="villageName">{{item.villageName }}</view>
+            <view class="apartmentCount">共{{item.apartmentCount}}栋 {{item.roomCount}}间房</view>
+            <view class="jiantou" data-key="{{item.villageId}}" bindtap="villageView">
+                全景记录
+                <image src='http://h.fengniaowu.com/loan/image/jiantou.png' style="width:24px;height:24px;vertical-align:bottom"></image>
+            </view>
+        </view>
+        <view style="background:#ffffff;padding:0 20px">
+            <view wx:for="{{item.apartments}}" wx:for-item="subItem" class="subItem">
+                {{ subItem.apartmentName}}
+                <view class="roomCount" data-villageId="{{item.villageId}}" data-apartmentId="{{subItem.apartmentId}}"
+                      bindtap="apartmentView">
+                    {{ subItem.roomCount}}间
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="choose" wx:if="{{isTenancys}}">
+        <view class="tenancy">
+            <view class="section__title">
+                请选择商户
+                <image src='http://h.fengniaowu.com/loan/image/close.png' class="close" bindtap="hideTenancys"></image>
+            </view>
+            <scroll-view scroll-y="true" style="height:330px">
+                <view class="scroll-view-item" wx:for="{{tenancyList}}">
+                    {{item.tenancyName}}
+                    <image wx:if="{{item.tenancyId==tenancyId2}}" src="http://h.fengniaowu.com/loan/image/checks.png"/>
+                    <image wx:else src="http://h.fengniaowu.com/loan/image/check.png" data-tenancyId="{{item.tenancyId}}"
+                           bindtap="pickTenancy"/>
+                </view>
+            </scroll-view>
+            <view style="background:#47cabf;width:100%;height:50px;line-height: 50px;font-size:16px;color:#ffffff;text-align:center" bindtap="finishTenancy">
+                确定
+            </view>
+        </view>
+    </view>
+</view>

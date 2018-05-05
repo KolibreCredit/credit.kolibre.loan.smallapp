@@ -1,0 +1,55 @@
+/**index.wxss**/
+page {
+  background-image: url("http://h.fengniaowu.com/loan/image/bg2.jpg");
+}
+
+.list {
+  width: 100%;
+  background-color: #fff;
+  margin-top: -100px;
+  border-radius: 6px;
+}
+
+.item {
+  height: 70px;
+  border-bottom: 1px solid #f1f1f1;
+  position: relative;
+}
+
+.item .logo {
+  width: 140px;
+  height: 60px;
+  margin-left: 20px;
+  margin-top:5px;
+}
+
+.item .hint1 {
+  width: 70px;
+  height: 26px;
+  top: 22px;
+  right: 58px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.item .hint2 {
+  width: 70px;
+  height: 26px;
+  top: 22px;
+  right: 58px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.item:last-child {
+  border: none;
+}
+
+.item .jiantou {
+  width: 24px;
+  height: 24px;
+  top: 23px;
+  right: 23px;
+  position: absolute;
+  cursor: pointer;
+}

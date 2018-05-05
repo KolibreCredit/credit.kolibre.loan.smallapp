@@ -1,0 +1,162 @@
+/* pages/project/village.wxss */
+page {
+    background-color: #f8f8f8;
+}
+
+.itemScenerie {
+    width: 100%;
+    background: #ffffff;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.itemScenerie swiper {
+    width: 100%;
+    height: 200px;
+}
+
+.slide-image {
+    width: 100%;
+    height: 200px;
+}
+
+.pageHint {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 0 15px 15px 0;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    left: 0;
+    top: 160px;
+    font-size: 14px;
+    color: #ffffff;
+    text-align: center;
+    display: inline-block;
+}
+
+.sceneryTypeName {
+    background: #ecf9f8;
+    border-radius: 0 100px 100px 0;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    color: #32BDB2;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.more {
+    position: absolute;
+    right: 20px;
+    top: 13px;
+    width: 24px;
+    height: 24px;
+}
+
+.editor {
+    position: absolute;
+    top: 160px;
+    right: 70px;
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 100%;
+}
+
+.editor image {
+    width: 30px;
+    height: 30px;
+}
+
+.delete {
+    position: absolute;
+    top: 160px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 100%;
+}
+
+.delete image {
+    width: 30px;
+    height: 30px;
+}
+
+.choose {
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.tenancy {
+    height: 430px;
+    width: 100%;
+    background: #ffffff;
+    position: absolute;
+    bottom: 0;
+}
+.section__title {
+    font-size: 16px;
+    color: #666666;
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+    padding-left: 20px;
+}
+.section__title image {
+    width: 24px;
+    height: 24px;
+    top: 13px;
+    right: 20px;
+    position: absolute;
+}
+.scroll-view-item {
+    border-top: 1px solid #f1f1f1;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    color: #646464;
+    position: relative;
+    padding-left: 20px;
+}
+.scroll-view-item image {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 20px;
+    top: 13px;
+}
+
+.footer {
+    position: fixed;
+    height: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #FFFFFF;
+}
+
+.footer .add {
+    width: 50%;
+    float: left;
+    font-size: 16px;
+    color: #47cabf;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+}
+
+.footer .choose1 {
+    width: 50%;
+    float: right;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    background: #47cabf;
+}

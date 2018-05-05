@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/customer/index",
+    "pages/customer/risk",
+    "pages/customer/riskItem",
+    "pages/user/index",
+    "pages/user/user",
+    "pages/login/login",
+    "pages/login/login2",
+    "pages/login/login3",
+    "pages/login/resetPassword",
+    "pages/message/index",
+    "pages/message/list",
+    "pages/project/index",
+    "pages/project/detail",
+    "pages/project/device",
+    "pages/project/village",
+    "pages/project/villageItem",
+    "pages/project/apartment",
+    "pages/project/record"
+  ],
+  "tabBar": {
+    "color": "#979797",
+    "selectedColor": "#47cabf",
+    "list": [
+      {
+        "pagePath": "pages/customer/index",
+        "text": "客户管理",
+        "iconPath": "image/tabBar/1.png",
+        "selectedIconPath": "image/tabBar/1S.png"
+      },
+      {
+        "pagePath": "pages/project/index",
+        "text": "项目管理",
+        "iconPath": "image/tabBar/2.png",
+        "selectedIconPath": "image/tabBar/2S.png"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "个人中心",
+        "iconPath": "image/tabBar/3.png",
+        "selectedIconPath": "image/tabBar/3S.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "蜂鸟屋-贷中管理",
+    "navigationBarTextStyle": "black"
+  }
+}

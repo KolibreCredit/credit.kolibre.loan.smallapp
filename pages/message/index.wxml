@@ -1,0 +1,5 @@
+<!--pages/message/index.wxml-->
+<text>pages/message/index.wxml</text>
+<navigator url="/pages/message/list">
+  <span style="color:#47cabf;padding:2px 0;border-bottom:1px solid #47cabf">list</span>
+</navigator>

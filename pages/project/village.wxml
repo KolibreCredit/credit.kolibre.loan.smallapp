@@ -1,0 +1,98 @@
+<!-- showToast -->
+<import src="../../utils/showToast.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}"/>
+<!-- filter -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<!--pages/project/village.wxml-->
+<view class="mui-content">
+    <block wx:for="{{villageSceneries.data}}">
+        <view class="itemScenerie">
+            <swiper bindchange="swiperChange" data-index="{{index}}">
+                <block wx:for="{{item.sceneryPictures}}" wx:for-item="subItem">
+                    <swiper-item>
+                        <image src="{{subItem}}" class="slide-image"/>
+                    </swiper-item>
+                </block>
+            </swiper>
+            <view class="pageHint">
+                {{itemDatas[index].currentIndex+1}}/{{item.sceneryPictures.length}}
+            </view>
+            <view class="editor">
+                <image src="http://h.fengniaowu.com/loan/image/editor.png" data-sceneryId="{{item.sceneryId}}"
+                       bindtap="editorItem"/>
+            </view>
+            <view class="delete">
+                <image src="http://h.fengniaowu.com/loan/image/delete2.png" data-sceneryId="{{item.sceneryId}}"
+                       bindtap="showItemDelete"/>
+            </view>
+            <view style="height:50px;position:relative;padding:10px 45px 10px 0;line-height:30px">
+                <view class="sceneryTypeName">
+                    {{item.sceneryTypeName}}
+                </view>
+                <text style="float:right;font-size:14px;color:#646464">{{filter.formatYYYMMDD(item.createTime)}}</text>
+                <image wx:if="{{itemDatas[index].isMore}}" src="http://h.fengniaowu.com/loan/image/up.png" class="more" data-index="{{index}}"
+                       bindtap="hideMore"/>
+                <image wx:else src="http://h.fengniaowu.com/loan/image/down.png" class="more" data-index="{{index}}" bindtap="showMore"/>
+            </view>
+            <view wx:if="{{itemDatas[index].isMore}}" style="padding:0 20px 10px 20px">
+                <view style="padding:10px;font-size:14px;color:#646464;background:rgba(176,190,197,0.15);border-radius:2px;line-height:20px">
+                    {{item.describe}}
+                </view>
+            </view>
+        </view>
+    </block>
+    <view style="height:50px"></view>
+    <view class="footer">
+        <view class="add" bindtap="addVillage">
+            <image src='http://h.fengniaowu.com/loan/image/add2.png'
+                   style="width:24px;height:24px;vertical-align:middle;margin-top:-4px"></image>
+            添加记录
+        </view>
+        <view class="choose1" bindtap="showApartments">
+            进入公寓
+            <image src='http://h.fengniaowu.com/loan/image/jiantou2.png'
+                   style="width:8px;height:12px;margin-left:5px;vertical-align:middle"></image>
+        </view>
+    </view>
+    <view class="show-container" wx:if="{{isItemDelete}}">
+        <view style="background:#ffffff;box-shadow:0 15px 25px 0 rgba(0,0,0,0.20);border-radius:6px;width:100%;height:238px;padding:0 20px">
+            <view style="text-align:center;margin-top:30px;font-size:18px;color:#646464">
+                <image src='http://h.fengniaowu.com/loan/image/add2.png'
+                       style="width:24px;height:24px;vertical-align:middle;margin-top:-4px"></image>
+            </view>
+            <view style="margin-top:50px;text-align:center">
+                确定删除这条全景记录？
+            </view>
+            <view style="margin-top: 40px">
+                <view style="border:1px solid #47cabf;text-align:center;border-radius:100px;width:118px;height:38px;line-height: 38px;display: inline-block;font-size:18px;color:#47cabf"
+                      bindtap="hideItemDelete">
+                    取消
+                </view>
+                <button class="btnActive"
+                        style="background:#47cabf;border-radius:40px;height:40px;line-height: 40px;color:#ffffff;font-size:18px;width:118px;border:none;float:right"
+                        bindtap="deleteScenery">确定
+                </button>
+            </view>
+        </view>
+    </view>
+    <view class="choose" wx:if="{{isApartments}}">
+        <view class="tenancy">
+            <view class="section__title">
+                请选择公寓
+                <image src='http://h.fengniaowu.com/loan/image/close.png' class="close" bindtap="hideApartments"></image>
+            </view>
+            <scroll-view scroll-y="true" style="height:330px">
+                <view class="scroll-view-item" wx:for="{{apartmentList}}">
+                    {{item.apartmentName}}
+                    <image wx:if="{{item.apartmentId==apartmentId}}" src="http://h.fengniaowu.com/loan/image/checks.png"/>
+                    <image wx:else src="http://h.fengniaowu.com/loan/image/check.png" data-apartmentId="{{item.apartmentId}}"
+                           bindtap="pickApartment"/>
+                </view>
+            </scroll-view>
+            <view style="background:#47cabf;width:100%;height:50px;line-height: 50px;font-size:16px;color:#ffffff;text-align:center"
+                  bindtap="finishApartment">
+                确定
+            </view>
+        </view>
+    </view>
+</view>

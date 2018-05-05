@@ -1,0 +1,98 @@
+<!-- showToast -->
+<import src="../../utils/showToast.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}"/>
+<!--pages/project/record.wxml-->
+<view class="mui-content">
+    <block wx:if="{{tabIndex==1}}">
+        <view class="row">
+            记录类型
+            <view class="viewInput">
+                {{recordType=="Open"?"开":"关"}}
+                <switch bindchange="recordTypeChange" type="switch"/>
+            </view>
+        </view>
+        <view class="row">
+            累计次数
+            <view class="viewInput">
+                <input type="number" placeholder="请填写近7天的累计次数" value="{{addUpCount}}" data-key="addUpCount"
+                       bindinput="bindKeyInput"/>
+            </view>
+        </view>
+        <view class="row">
+            开始时间
+            <view class="viewInput">
+                <picker mode="date" value="{{recordStartTime}}" bindchange="recordStartTimeDateChange">
+                    {{recordStartTime}}
+                    <image src="http://h.fengniaowu.com/loan/image/jiantou.png" class="jiantou"></image>
+                </picker>
+            </view>
+        </view>
+
+        <view class="row">
+            结束时间
+            <view class="viewInput">
+                <picker mode="date" value="{{recordEndTime}}" bindchange="recordEndTimeDateChange">
+                    {{recordEndTime}}
+                    <image src="http://h.fengniaowu.com/loan/image/jiantou.png" class="jiantou"></image>
+                </picker>
+            </view>
+        </view>
+    </block>
+    <block wx:elif="{{tabIndex==2}}">
+        <view class="row" style="border-bottom:none">
+            读数（吨）
+            <view class="viewInput">
+                <input type="digit" placeholder="请填写读数" value="{{currentRead}}" data-key="currentRead"
+                       bindinput="bindKeyInput"/>
+            </view>
+        </view>
+        <view class="securityRange">
+            <image src="http://h.fengniaowu.com/loan/image/securityRange.png" style="width:12px;height:12px;vertical-align:middle"></image>
+            安全范围：{{securityRange}}%
+        </view>
+        <view class="row">
+            记录时间
+            <view class="viewInput">
+                <picker mode="date" value="{{recordTime}}" bindchange="recordTimeDateChange">
+                    {{recordTime}}
+                    <image src="http://h.fengniaowu.com/loan/image/jiantou.png" class="jiantou"></image>
+                </picker>
+            </view>
+        </view>
+    </block>
+    <view style="background-color: #FFFFFF;padding:20px;margin-top:10px">
+        <view style="height:50px;line-height:50px;font-size:16px;color:#646464">
+            描述
+        </view>
+        <textarea placeholder="请输入描述内容" style="border:1px solid #e9e9e9;width:95%;height:98px;padding: 5px" value="{{describe}}" bindinput="bindKeyInput"/>
+        <view style="margin-top:10px;font-size:16px;color:#646464">
+            上传图片<span style="color:#B2B2B2;display:none">（不超过5张）</span>
+        </view>
+        <scroll-view class="scroll-view_H" scroll-x="true" style="width:100%">
+            <block wx:for="{{pictures}}">
+                <view class="scroll-view-item_H">
+                    <image src="{{item}}"></image>
+                    <image src="http://h.fengniaowu.com/loan/image/delete.png" class="delete" data-key="{{index}}"
+                           bindtap="bindDeletePictures"></image>
+                </view>
+            </block>
+            <view class="scroll-view-item_H chooseImage" bindtap="bindAddPictures">
+                <image src="http://h.fengniaowu.com/loan/image/add2.png"></image>
+            </view>
+        </scroll-view>
+    </view>
+    <view style="padding:0 20px;background-color: #FFFFFF;margin-top:20px">
+        <button wx:if="{{tabIndex==0}}" class="btnActive"
+                style="background:#47cabf;border-radius:40px;height:40px;line-height: 40px;color:#ffffff;font-size:18px;width:100%;border:none;"
+                bindtap="createRoomRecords">确认
+        </button>
+        <button wx:if="{{tabIndex==1}}" class="btnActive"
+                style="background:#47cabf;border-radius:40px;height:40px;line-height: 40px;color:#ffffff;font-size:18px;width:100%;border:none;margin-bottom:30px"
+                bindtap="createOpenDoorLockRecord">确认
+        </button>
+        <button wx:if="{{tabIndex==2}}" class="btnActive"
+                style="background:#47cabf;border-radius:40px;height:40px;line-height: 40px;color:#ffffff;font-size:18px;width:100%;border:none"
+                bindtap="createWaterElectricRecord">确认
+        </button>
+    </view>
+</view>
