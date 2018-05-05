@@ -20,6 +20,7 @@ Page({
         roomId: "",
         tabIndex: 0,
         deviceId: "",
+        deviceType: "",
         //
         recordType: "Close",
         addUpCount: "",
@@ -31,7 +32,8 @@ Page({
         recordTime: util.formatDate(new Date()),
         //
         describe: "",
-        pictures: null
+        pictures: null,
+        isPost: false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -40,7 +42,8 @@ Page({
         this.setData({
             roomId: options.roomId,
             tabIndex: options.tabIndex,
-            deviceId: options.deviceId
+            deviceId: options.deviceId,
+            deviceType: options.deviceType
         });
     },
     /**
@@ -134,12 +137,16 @@ Page({
             mui.toast(constants.MSGINFO.PICTURES);
             return false;
         }
+
         var roomRecord = {
             roomId: this.data.roomId,
             describe: this.data.describe,
             pictures: this.data.pictures
         };
+        var that = this;
+        that.setData({isPost: true});
         app.postInvoke(constants.URLS.CREATEROOMRECORDS, roomRecord, function (res) {
+            that.setData({isPost: false});
             if (res.succeeded) {
                 mui.toast(constants.MSGINFO.ROOMRECORDDESCRIBESUCCEE);
                 setTimeout(function () {
@@ -149,6 +156,7 @@ Page({
                 mui.toast(res.message);
             }
         }, function (err) {
+            that.setData({isPost: false});
             mui.toast(err.message);
         });
     },
@@ -196,7 +204,10 @@ Page({
             describe: this.data.describe,
             lockPictures: this.data.pictures
         };
+        var that = this;
+        that.setData({isPost: true});
         app.postInvoke(constants.URLS.CREATEOPENDOORLOCKRECORD, doorLockRecord, function (res) {
+            that.setData({isPost: false});
             if (res.succeeded) {
                 mui.toast(constants.MSGINFO.DOORLOCKRECORDSUCCEE);
                 setTimeout(function () {
@@ -206,6 +217,7 @@ Page({
                 mui.toast(res.message);
             }
         }, function (err) {
+            that.setData({isPost: false});
             mui.toast(err.message);
         });
     },
@@ -232,7 +244,10 @@ Page({
             currentRead: this.data.currentRead,
             securityRange: this.data.securityRange
         };
+        var that = this;
+        that.setData({isPost: true});
         app.postInvoke(constants.URLS.CREATEWATERELECTRICRECORD, waterElectricRecord, function (res) {
+            that.setData({isPost: false});
             if (res.succeeded) {
                 mui.toast(constants.MSGINFO.WATERELECTRICRECORDSUCCEE);
                 setTimeout(function () {
@@ -242,6 +257,7 @@ Page({
                 mui.toast(res.message);
             }
         }, function (err) {
+            that.setData({isPost: false});
             mui.toast(err.message);
         });
     }

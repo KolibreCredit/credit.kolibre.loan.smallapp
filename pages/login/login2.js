@@ -6,7 +6,7 @@ const mui = {
     toast: function (title) {
         dialog.showToast({
             title: title,
-            mask: false            
+            mask: false
         });
     }
 };
@@ -134,14 +134,7 @@ Page({
     },
     retlogin: function () {
         setTimeout(function () {
-            /* if (url != '') {
-             window.location.href = decodeURIComponent(url);
-             } else {
-             window.location.href = "index.html";
-             }*/
-            wx.switchTab({
-                url: '/pages/customer/index'
-            });
+            wx.switchTab({url: '/pages/customer/index'});
         }, 2000);
     },
     loginByCaptcha: function () {
@@ -162,10 +155,10 @@ Page({
         };
         var that = this;
         app.postInvoke(constants.URLS.VERIFY, verify, function (res) {
-            that.setData({isPost: false});
             if (res.succeeded) {
                 app.postInvoke(constants.URLS.QUICKLOGIN, {authCode: res.data.authCode}, function (res1) {
                     if (res1.succeeded) {
+                        that.setData({isPost: false});
                         if (res1.data.loginState == "Succeed") {
                             app.setStorageSync(constants.COOKIES.AUTH, res1.headers["x-KC-SID"]);
                             mui.toast(constants.MSGINFO.LOGINSUCCESS);
@@ -175,12 +168,15 @@ Page({
                             that.enumLoginState(res1.data.loginState);
                         }
                     } else {
+                        that.setData({isPost: false});
                         mui.toast(res1.message);
                     }
                 }, function (err) {
+                    that.setData({isPost: false});
                     mui.toast(err.message);
                 });
             } else {
+                that.setData({isPost: false});
                 mui.toast(res.message);
             }
         }, function (err) {

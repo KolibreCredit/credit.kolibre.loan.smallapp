@@ -43,8 +43,10 @@
         </view>
         <view style="margin-top:10px;height:45px;line-height:50px;font-size:16px;color:#646464;text-align:left;border-bottom:1px solid #e9e9e9;position:relative">
             目前职位
-            <picker bindchange="bindPositionChange" range="{{positions}}" range-key="{{'positionName'}}"  value="{{index}}" style="padding-right:30px">
-                {{positionId==""?"请选择职位": positionName}}  <image src="http://h.fengniaowu.com/loan/image/jiantou.png" class="jiantou"></image>
+            <picker bindchange="bindPositionChange" range="{{positions}}" range-key="{{'positionName'}}"
+                    value="{{index}}" style="padding-right:30px">
+                {{positionId==""?"请选择职位": positionName}}
+                <image src="http://h.fengniaowu.com/loan/image/jiantou.png" class="jiantou"></image>
             </picker>
 
         </view>
@@ -53,6 +55,14 @@
                     style="background:#47cabf;border-radius:44px;height:44px;color:#ffffff;font-size:18px;width:100%;border:none"
                     bindtap="bindUpdateLoanInAccountInfo">确定
             </button>
+        </view>
+    </view>
+    <view class="msg-post" wx:if="{{isPost}}">
+        <view style="text-align:center">
+            <image src="http://h.fengniaowu.com/loan/image/loading.gif" style="width:62px;height:62px"/>
+        </view>
+        <view style="font-size:16px;margin-top:10px">
+            正在提交数据请等待...
         </view>
     </view>
 </view>

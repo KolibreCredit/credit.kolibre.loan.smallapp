@@ -169,7 +169,7 @@ Page({
     },
     addRecord: function (e) {
         if (this.data.tabIndex == 0) {
-            wx.navigateTo({url: '/pages/project/record?roomId=' + this.data.roomId + "&tabIndex=" + this.data.tabIndex + "&deviceId=0"});
+            wx.navigateTo({url: '/pages/project/record?roomId=' + this.data.roomId + "&tabIndex=" + this.data.tabIndex + "&deviceId=0&deviceType=0"});
         }
         else if (this.data.tabIndex == 1) {
             var itemDevice = this.data.doorLock.devices[this.data.doorLockDeviceIndex];
@@ -177,7 +177,7 @@ Page({
                 itemDevice = this.data.doorLock.devices[this.data.doorLockDeviceIndex - 1];
             }
             var doorLockDeviceId = itemDevice.deviceId;
-            wx.navigateTo({url: '/pages/project/record?roomId=' + this.data.roomId + "&tabIndex=" + this.data.tabIndex + "&deviceId=" + doorLockDeviceId});
+            wx.navigateTo({url: '/pages/project/record?roomId=' + this.data.roomId + "&tabIndex=" + this.data.tabIndex + "&deviceId=" + doorLockDeviceId + "&deviceType=" + itemDevice.deviceType});
         }
         else {
             var itemDevice = this.data.waterElectric.devices[this.data.waterElectricDeviceIndex];
@@ -185,7 +185,7 @@ Page({
                 itemDevice = this.data.waterElectric.devices[this.data.waterElectricDeviceIndex - 1];
             }
             var waterElectricDeviceId = itemDevice.deviceId;
-            wx.navigateTo({url: '/pages/project/record?roomId=' + this.data.roomId + "&tabIndex=" + this.data.tabIndex + "&deviceId=" + waterElectricDeviceId});
+            wx.navigateTo({url: '/pages/project/record?roomId=' + this.data.roomId + "&tabIndex=" + this.data.tabIndex + "&deviceId=" + waterElectricDeviceId + "&deviceType=" + itemDevice.deviceType});
         }
     },
     addDevice: function (e) {

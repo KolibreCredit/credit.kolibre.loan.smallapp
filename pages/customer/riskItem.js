@@ -42,7 +42,8 @@ Page({
         }],
         riskDescribe: "",
         riskTime: util.formatDate(new Date()),
-        relevantPictures: null
+        relevantPictures: null,
+        isPost: false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -190,6 +191,7 @@ Page({
                 break;
             }
         }
+        this.setData({isPost: true});
         var itemRisk = {
             tenancyId: this.data.tenancyId,
             lableId: riskLableId,
@@ -201,6 +203,7 @@ Page({
         };
         var that = this;
         app.postInvoke(constants.URLS.CREATERISK, itemRisk, function (res) {
+            that.setData({isPost: false});
             if (res.succeeded) {
                 riskPictures = [];
                 mui.toast(constants.MSGINFO.RISKSUCCEE);
@@ -213,6 +216,7 @@ Page({
                 mui.toast(res.message);
             }
         }, function (err) {
+            that.setData({isPost: false});
             mui.toast(err.message);
         });
     }

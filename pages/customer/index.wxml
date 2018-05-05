@@ -6,7 +6,7 @@
 <!--index.wxml-->
 <view class="mui-content">
     <view style='text-align:center'>
-        <image src='http://h.fengniaowu.com/loan/image/logo.png' style='width:375px' mode='aspectFit'></image>
+        <image src="http://h.fengniaowu.com/loan/image/logo.png" style="width:100%" mode='aspectFit'></image>
     </view>
     <view style='padding:0 10px'>
         <view class='list'>

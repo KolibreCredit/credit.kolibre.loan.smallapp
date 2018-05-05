@@ -85,4 +85,12 @@
         <button class="btnActive" style="background:#47cabf;border-radius:40px;height:40px;line-height: 40px;color:#ffffff;font-size:18px;width:100%;border:none;"  bindtap="createRisk">确认并提交</button>
     </view>
     <view style="background-color: #FFFFFF;height:20px"></view>
+    <view class="msg-post" wx:if="{{isPost}}">
+        <view style="text-align:center">
+            <image src="http://h.fengniaowu.com/loan/image/loading.gif" style="width:62px;height:62px"/>
+        </view>
+        <view style="font-size:16px;margin-top:10px">
+            正在提交数据请等待...
+        </view>
+    </view>
 </view>

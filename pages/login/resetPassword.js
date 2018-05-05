@@ -10,10 +10,8 @@ const mui = {
         });
     }
 };
-
 var waitTimer = null;
 var waitCount = 60;
-var isResetPassword = true;
 var isSendCaptcha = true;
 
 Page({
@@ -87,68 +85,67 @@ Page({
         }
     },
     changePassword: function () {
-        if (isResetPassword) {
-            var cellphone = this.data.cellphone;
-            if (cellphone == '') {
-                mui.toast(constants.MSGINFO.PHONE);
-                return false;
-            }
-            if (!constants.REGEX.CELLPHONE.test(cellphone)) {
-                mui.toast(constants.MSGINFO.PHONEERR);
-                return false;
-            }
-            var captcha = this.data.captcha;
-            if (captcha == '') {
-                mui.toast(constants.MSGINFO.CAPTCHA);
-                return false;
-            }
-            if (!constants.REGEX.CHECKCODE.test(captcha)) {
-                mui.toast(constants.MSGINFO.CAPTCHAERR);
-                return false;
-            }
-            var password = this.data.password;
-            if (password == '') {
-                mui.toast(constants.MSGINFO.PASSWORD);
-                return false;
-            }
-            if (!constants.REGEX.PASSWORD.test(password)) {
-                mui.toast(constants.MSGINFO.PASSWORDERR);
-                return false;
-            }
-            isResetPassword = false;
-            var verify = {
-                cellphone: cellphone,
-                businessType: "AccountChangePassword",
-                validateCode: captcha
-            };
-            app.postInvoke(constants.URLS.VERIFY, verify, function (res) {
-                if (res.succeeded) {
-                    var data = {
-                        authCode: res.data.authCode,
-                        newPassword: password
-                    };
-                    app.postInvoke(constants.URLS.SETPASSWORD, data, function (res1) {
-                        isResetPassword = true;
-                        if (res1.succeeded) {
-                            mui.toast(constants.MSGINFO.RESETPASSWORD);
-                            setTimeout(function () {
-                                wx.navigateTo({url: '/pages/login/login3'});
-                            }, 1000);
-                        } else {
-                            mui.toast(constants.MSGINFO.RESETPASSWORDERR);
-                        }
-                    }, function (err) {
-                        isResetPassword = true;
-                        mui.toast(err.message);
-                    });
-                } else {
-                    isResetPassword = true;
-                    mui.toast(res.message);
-                }
-            }, function (err) {
-                isResetPassword = true;
-                mui.toast(err.message);
-            });
+        var cellphone = this.data.cellphone;
+        if (cellphone == '') {
+            mui.toast(constants.MSGINFO.PHONE);
+            return false;
         }
+        if (!constants.REGEX.CELLPHONE.test(cellphone)) {
+            mui.toast(constants.MSGINFO.PHONEERR);
+            return false;
+        }
+        var captcha = this.data.captcha;
+        if (captcha == '') {
+            mui.toast(constants.MSGINFO.CAPTCHA);
+            return false;
+        }
+        if (!constants.REGEX.CHECKCODE.test(captcha)) {
+            mui.toast(constants.MSGINFO.CAPTCHAERR);
+            return false;
+        }
+        var password = this.data.password;
+        if (password == '') {
+            mui.toast(constants.MSGINFO.PASSWORD);
+            return false;
+        }
+        if (!constants.REGEX.PASSWORD.test(password)) {
+            mui.toast(constants.MSGINFO.PASSWORDERR);
+            return false;
+        }
+        var verify = {
+            cellphone: cellphone,
+            businessType: "AccountChangePassword",
+            validateCode: captcha
+        };
+        var that = this;
+        that.setData({isPost: true});
+        app.postInvoke(constants.URLS.VERIFY, verify, function (res) {
+            if (res.succeeded) {
+                var data = {
+                    authCode: res.data.authCode,
+                    newPassword: password
+                };
+                app.postInvoke(constants.URLS.SETPASSWORD, data, function (res1) {
+                    that.setData({isPost: false});
+                    if (res1.succeeded) {
+                        mui.toast(constants.MSGINFO.RESETPASSWORD);
+                        setTimeout(function () {
+                            wx.navigateTo({url: '/pages/login/login3'});
+                        }, 1000);
+                    } else {
+                        mui.toast(constants.MSGINFO.RESETPASSWORDERR);
+                    }
+                }, function (err) {
+                    that.setData({isPost: false});
+                    mui.toast(err.message);
+                });
+            } else {
+                that.setData({isPost: false});
+                mui.toast(res.message);
+            }
+        }, function (err) {
+            that.setData({isPost: false});
+            mui.toast(err.message);
+        });
     }
 });

@@ -33,7 +33,8 @@ Page({
             key: "ElectricMeter",
             desc: "电"
         }],
-        deviceModelType: "NotIntelligence"
+        deviceModelType: "NotIntelligence",
+        isPost: false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -94,7 +95,10 @@ Page({
             deviceType: deviceType,
             deviceModelType: this.data.deviceModelType
         };
+        var that = this;
+        that.setData({isPost: true});
         app.postInvoke(constants.URLS.CREATEROOMDEVICE, device, function (res) {
+            that.setData({isPost: false});
             if (res.succeeded) {
                 mui.toast(constants.MSGINFO.DEVICESUCCEE);
                 setTimeout(function () {
@@ -104,6 +108,7 @@ Page({
                 mui.toast(res.message);
             }
         }, function (err) {
+            that.setData({isPost: false});
             mui.toast(err.message);
         });
     }

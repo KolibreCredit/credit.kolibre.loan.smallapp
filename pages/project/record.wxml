@@ -1,6 +1,8 @@
 <!-- showToast -->
 <import src="../../utils/showToast.wxml"/>
 <template is="showToast" data="{{showToast: showToast}}"/>
+<!-- filter -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--pages/project/record.wxml-->
 <view class="mui-content">
     <block wx:if="{{tabIndex==1}}">
@@ -40,14 +42,15 @@
     </block>
     <block wx:elif="{{tabIndex==2}}">
         <view class="row" style="border-bottom:none">
-            读数（吨）
+            {{filter.formatDeviceType(deviceType)}}读数（吨）
             <view class="viewInput">
                 <input type="digit" placeholder="请填写读数" value="{{currentRead}}" data-key="currentRead"
                        bindinput="bindKeyInput"/>
             </view>
         </view>
         <view class="securityRange">
-            <image src="http://h.fengniaowu.com/loan/image/securityRange.png" style="width:12px;height:12px;vertical-align:middle"></image>
+            <image src="http://h.fengniaowu.com/loan/image/securityRange.png"
+                   style="width:12px;height:12px;vertical-align:middle"></image>
             安全范围：{{securityRange}}%
         </view>
         <view class="row">
@@ -64,7 +67,8 @@
         <view style="height:50px;line-height:50px;font-size:16px;color:#646464">
             描述
         </view>
-        <textarea placeholder="请输入描述内容" style="border:1px solid #e9e9e9;width:95%;height:98px;padding: 5px" value="{{describe}}" bindinput="bindKeyInput"/>
+        <textarea placeholder="请输入描述内容" style="border:1px solid #e9e9e9;width:95%;height:98px;padding: 5px"
+                  value="{{describe}}" bindinput="bindKeyInput"/>
         <view style="margin-top:10px;font-size:16px;color:#646464">
             上传图片<span style="color:#B2B2B2;display:none">（不超过5张）</span>
         </view>
@@ -94,5 +98,13 @@
                 style="background:#47cabf;border-radius:40px;height:40px;line-height: 40px;color:#ffffff;font-size:18px;width:100%;border:none"
                 bindtap="createWaterElectricRecord">确认
         </button>
+    </view>
+    <view class="msg-post" wx:if="{{isPost}}">
+        <view style="text-align:center">
+            <image src="http://h.fengniaowu.com/loan/image/loading.gif" style="width:62px;height:62px"/>
+        </view>
+        <view style="font-size:16px;margin-top:10px">
+            正在提交数据请等待...
+        </view>
     </view>
 </view>

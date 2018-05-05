@@ -49,4 +49,12 @@
                 bindtap="createRoomDevice">确认
         </button>
     </view>
+    <view class="msg-post" wx:if="{{isPost}}">
+        <view style="text-align:center">
+            <image src="http://h.fengniaowu.com/loan/image/loading.gif" style="width:62px;height:62px"/>
+        </view>
+        <view style="font-size:16px;margin-top:10px">
+            正在提交数据请等待...
+        </view>
+    </view>
 </view>

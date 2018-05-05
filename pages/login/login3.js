@@ -45,17 +45,9 @@ Page({
             mui.toast(constants.MSGINFO.LOGINERR4);
         }
     },
-
     retlogin: function () {
         setTimeout(function () {
-            /* if (url != '') {
-             window.location.href = decodeURIComponent(url);
-             } else {
-             window.location.href = "index.html";
-             }*/
-            wx.switchTab({
-                url: '/pages/customer/index'
-            });
+            wx.switchTab({url: '/pages/customer/index'});
         }, 2000);
     },
     loginByPassword: function () {

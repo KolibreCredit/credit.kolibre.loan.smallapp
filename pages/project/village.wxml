@@ -18,7 +18,7 @@
                 {{itemDatas[index].currentIndex+1}}/{{item.sceneryPictures.length}}
             </view>
             <view class="editor">
-                <image src="http://h.fengniaowu.com/loan/image/editor.png" data-sceneryId="{{item.sceneryId}}"
+                <image src="http://h.fengniaowu.com/loan/image/editor2.png" data-sceneryId="{{item.sceneryId}}"
                        bindtap="editorItem"/>
             </view>
             <view class="delete">
@@ -36,7 +36,7 @@
             </view>
             <view wx:if="{{itemDatas[index].isMore}}" style="padding:0 20px 10px 20px">
                 <view style="padding:10px;font-size:14px;color:#646464;background:rgba(176,190,197,0.15);border-radius:2px;line-height:20px">
-                    {{item.describe}}
+                   描述：{{item.describe}}
                 </view>
             </view>
         </view>

@@ -24,7 +24,8 @@ Page({
         realName: "",
         credentialNo: "",
         positionName: "",
-        positionId: ""
+        positionId: "",
+        isPost: false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -92,13 +93,16 @@ Page({
             positionId: this.data.positionId
         };
         var that = this;
+        that.setData({isPost: true});
         app.postInvoke(constants.URLS.UPDATELOANINACCOUNTINFO, userInfo, function (res) {
+            that.setData({isPost: false});
             if (res.succeeded) {
                 that.getCurrentAccount();
             } else {
                 mui.toast(res.message);
             }
         }, function (err) {
+            that.setData({isPost: false});
             mui.toast(err.message);
         });
     },

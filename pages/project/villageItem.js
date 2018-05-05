@@ -24,7 +24,8 @@ Page({
         sceneryTypeName2: "",
         sceneryDescribe: "",
         sceneryPictures: null,
-        isUpdate: false
+        isUpdate: false,
+        isPost: false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -166,7 +167,9 @@ Page({
             sceneryPictures: this.data.sceneryPictures
         };
         var that = this;
+        that.setData({isPost: true});
         app.postInvoke(constants.URLS.CREATESCENERY, itemScenery, function (res) {
+            that.setData({isPost: false});
             if (res.succeeded) {
                 mui.toast(constants.MSGINFO.SCENERYSUCCEE);
                 setTimeout(function () {
@@ -176,6 +179,7 @@ Page({
                 mui.toast(res.message);
             }
         }, function (err) {
+            that.setData({isPost: false});
             mui.toast(err.message);
         });
     },
@@ -221,7 +225,9 @@ Page({
             sceneryPicture: this.data.sceneryPictures
         };
         var that = this;
+        that.setData({isPost: true});
         app.postInvoke(constants.URLS.UPDATESCENERY, itemScenery, function (res) {
+            that.setData({isPost: false});
             if (res.succeeded) {
                 mui.toast(constants.MSGINFO.UPDATESCENERY);
                 setTimeout(function () {
@@ -231,6 +237,7 @@ Page({
                 mui.toast(res.message);
             }
         }, function (err) {
+            that.setData({isPost: false});
             mui.toast(err.message);
         });
     }
