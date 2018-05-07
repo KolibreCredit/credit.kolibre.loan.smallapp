@@ -120,7 +120,7 @@ var filter = {
                 case "HotWaterMeter":
                      return "热水";
                 case "ElectricMeter":
-                        return "电表";
+                   return "电表";
                 case "GasMeter":
                      return "气表";
                 default:

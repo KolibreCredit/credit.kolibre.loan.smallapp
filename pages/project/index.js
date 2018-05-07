@@ -151,12 +151,16 @@ Page({
         });
     },
     finishTenancy: function (e) {
-        this.setData({
-            tenancyId: this.data.tenancyId2,
-            isTenancys: false,
-            pageIndex: 0
-        });
-        this.filterTenancy();
-        this.getVillageApartments();
+        wx.showTabBar({animation: true});
+        var that = this;
+        setTimeout(function () {
+            that.setData({
+                tenancyId: that.data.tenancyId2,
+                isTenancys: false,
+                pageIndex: 0
+            });
+            that.filterTenancy();
+            that.getVillageApartments();
+        }, 200);
     }
 })

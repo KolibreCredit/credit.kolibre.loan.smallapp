@@ -1,3 +1,4 @@
 page{        
     background-image:url("http://h.fengniaowu.com/loan/image/login.jpg");
+    background-size:cover;
 }

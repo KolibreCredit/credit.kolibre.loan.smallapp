@@ -27,7 +27,7 @@ Page({
         cellphone: "",
         validateCode: "",
         captchaText: "获取验证码",
-        isVoice: false,
+        isVoice: true,
         isPost: false
     },
     /**
@@ -37,6 +37,7 @@ Page({
         this.setData({
             cellphone: options.cellphone
         });
+        this.sendCaptcha();
     },
     bindKeyInput: function (e) {
         this.setData({

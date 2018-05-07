@@ -59,7 +59,7 @@ Page({
     tabRecord: function (e) {
         var index = parseInt(e.currentTarget.dataset.key);
         this.setData({
-            pageIndex: (this.data.tabIndex == index ? this.data.tabIndex : 0),
+            pageIndex: (this.data.tabIndex == index ? this.data.pageIndex : 0),
             tabIndex: index
         });
         this.getPageData();

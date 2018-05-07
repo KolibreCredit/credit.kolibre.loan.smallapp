@@ -11,8 +11,8 @@
         <view style="font-size:16px;color:#FFFFFF;height:22px;line-height:22px;margin-top:16px">
             欢迎进入交租平台
         </view>
-        <view style="border-bottom:1px solid rgba(255,255,255,0.30);margin-top:50px;position:relative">
-            <input placeholder="请输入手机号" maxlength="11" style='color:#FFFFFF' bindinput="bindKeyInput"/>
+        <view style="border-bottom:1px solid #3B5B80;margin-top:50px;position:relative">
+            <input placeholder="请输入手机号" placeholder-style="color:#6B84A0" maxlength="11" style='color:#FFFFFF' bindinput="bindKeyInput"/>
         </view>
         <view style="text-align:center;margin-top:50px">
             <button class="btnActive" style="background:#47cabf;border-radius:44px;height:44px;color:#ffffff;font-size:18px;width:100%;border:none"  bindtap="bindLgin2">下一步</button>

@@ -64,7 +64,7 @@ Page({
     },
     deviceModelTypeChange: function (e) {
         this.setData({
-            deviceModelType: (e.detail.value ? "Intelligence" : "deviceModelType")
+            deviceModelType: (e.detail.value ? "Intelligence" : "NotIntelligence")
         });
     },
     installTimeDateChange: function (e) {
