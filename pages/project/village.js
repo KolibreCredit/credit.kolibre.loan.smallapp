@@ -1,10 +1,10 @@
 // pages/project/village.js
 const app = getApp();
 const constants = app.constants;
-const dialog = require('../../utils/showToast');
+const $toast = require('../../utils/showToast');
 const mui = {
     toast: function (title) {
-        dialog.showToast({
+        $toast.showToast({
             title: title,
             mask: false
         });

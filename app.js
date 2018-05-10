@@ -36,7 +36,7 @@ App({
                 else if (res.code == 130078403) {
                     wx.showToast({
                         title: "无操作权限,请联系客服",
-                        image: "http://h.fengniaowu.com/loan/images/err.png",
+                        image: "http://h.fengniaowu.com/loan/image/err.png",
                         duration: 2000
                     });
                 } else {
@@ -46,7 +46,7 @@ App({
             fail: function () {
                 wx.showToast({
                     title: "网络链接异常,请稍后",
-                    image: "http://h.fengniaowu.com/loan/images/err.png",
+                    image: "http://h.fengniaowu.com/loan/image/err.png",
                     duration: 2000
                 });
             }
@@ -82,7 +82,7 @@ App({
             fail: function () {
                 wx.showToast({
                     title: "网络链接异常,请稍后",
-                    image: "/images/err.png",
+                    image: "http://h.fengniaowu.com/loan/image/err.png",
                     duration: 2000
                 });
             }
@@ -105,14 +105,14 @@ App({
                     var errInfo = JSON.parse(wxRes.data);
                     wx.showToast({
                         title: errInfo.message,
-                        image: "http://h.fengniaowu.com/loan/images/err.png",
+                        image: "http://h.fengniaowu.com/loan/image/err.png",
                         duration: 2000
                     });
                 }
             }, fail: function () {
                 wx.showToast({
                     title: "网络链接异常,请稍后",
-                    image: "http://h.fengniaowu.com/loan/images/err.png",
+                    image: "http://h.fengniaowu.com/loan/image/err.png",
                     duration: 2000
                 });
             }

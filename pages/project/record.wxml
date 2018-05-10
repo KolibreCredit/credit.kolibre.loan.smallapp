@@ -10,7 +10,7 @@
             记录类型
             <view class="viewInput">
                 {{recordType=="Open"?"开":"关"}}
-                <switch bindchange="recordTypeChange" type="switch"/>
+                <switch bindchange="recordTypeChange" type="switch" color="#51cdc3"/>
             </view>
         </view>
         <view class="row">

@@ -17,7 +17,7 @@
     <view class="row">
         是否智能设备
         <view class="viewInput">
-            {{deviceModelType=="Intelligence"?"是":"否"}}<switch bindchange="deviceModelTypeChange" type="switch"/>
+            {{deviceModelType=="Intelligence"?"是":"否"}}<switch bindchange="deviceModelTypeChange" type="switch" color="#51cdc3"/>
         </view>
     </view>
     <view class="row">
