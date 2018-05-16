@@ -11,6 +11,7 @@ const mui = {
         });
     }
 };
+
 Page({
     /**
      * 页面的初始数据
@@ -56,8 +57,6 @@ Page({
                     tenancyResponse: res.data.tenancyResponse,
                     riskResponses: res.data.riskResponses
                 });
-
-
             } else {
                 mui.toast(res.message);
             }

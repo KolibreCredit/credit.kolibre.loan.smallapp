@@ -140,9 +140,11 @@ var filter = {
             default:
                 return "其他";
         }
+    },
+    formatCurrentRead: function (currentRead) {
+        return (currentRead / 100).toFixed(2);
     }
 }
-
 module.exports = {
     getDate: filter.getDate,
     domainToLogo: filter.domainToLogo,
@@ -150,5 +152,6 @@ module.exports = {
     domainToLogo3: filter.domainToLogo3,
     formatYYYMMDD: filter.formatYYYMMDD,
     formatDeviceType: filter.formatDeviceType,
-    formatRoomState: filter.formatRoomState
+    formatRoomState: filter.formatRoomState,
+    formatCurrentRead: filter.formatCurrentRead
 }

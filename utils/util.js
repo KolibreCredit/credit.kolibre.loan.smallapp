@@ -28,6 +28,7 @@ const formatNumber = function (n) {
     n = n.toString()
     return n[1] ? n : '0' + n
 }
+
 function uuid() {
     var s = [];
     var hexDigits = "0123456789abcdef";

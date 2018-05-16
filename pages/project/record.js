@@ -241,7 +241,7 @@ Page({
             recordTime: this.data.recordEndTime,
             describe: this.data.describe,
             recordPictures: this.data.pictures,
-            currentRead: this.data.currentRead,
+            currentRead: this.data.currentRead * 100,
             securityRange: this.data.securityRange
         };
         var that = this;

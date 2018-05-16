@@ -1,5 +1,4 @@
 // pages/project/apartment.js
-
 const app = getApp();
 const constants = app.constants;
 const $toast = require('../../utils/showToast');
