@@ -24,7 +24,8 @@ Page({
         isItemDelete: false,
         sceneryId: "",
         isApartments: false,
-        apartmentId: ""
+        apartmentId: "",
+        isPreviewImage: false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -39,7 +40,11 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        this.getSceneries();
+        if (this.data.isPreviewImage) {
+            this.setData({isPreviewImage: false});
+        } else {
+            this.getSceneries();
+        }
     },
     getSceneries: function () {
         var scenerie = {
@@ -70,6 +75,14 @@ Page({
             }
         }, function (err) {
             mui.toast(err.message);
+        });
+    },
+    previewImage: function (e) {
+        this.setData({isPreviewImage: true});
+        var current = e.target.dataset.src;
+        wx.previewImage({
+            current: current,
+            urls: [current]
         });
     },
     /**

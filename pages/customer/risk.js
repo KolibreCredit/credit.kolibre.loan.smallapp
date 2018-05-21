@@ -22,7 +22,8 @@ Page({
         pageSize: 200,
         tenancyResponse: null,
         riskResponses: null,
-        riskItems: []
+        riskItems: [],
+        isPreviewImage: false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -33,7 +34,11 @@ Page({
         });
     },
     onShow: function () {
-        this.getRisks();
+        if (this.data.isPreviewImage) {
+            this.setData({isPreviewImage: false});
+        } else {
+            this.getRisks();
+        }
     },
     getRisks: function () {
         var risks = {
@@ -101,6 +106,14 @@ Page({
         riskItems[e.currentTarget.dataset.index] = false;
         this.setData({
             riskItems: riskItems
+        });
+    },
+    previewImage: function (e) {
+        this.setData({isPreviewImage: true});
+        var current = e.target.dataset.src;
+        wx.previewImage({
+            current: current,
+            urls: [current]
         });
     }
 })

@@ -35,7 +35,8 @@ Page({
         //
         waterElectric: null,
         waterElectricDeviceIndex: 0,
-        waterElectricRecordItems: []
+        waterElectricRecordItems: [],
+        isPreviewImage: false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -54,7 +55,11 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        this.getPageData();
+        if (this.data.isPreviewImage) {
+            this.setData({isPreviewImage: false});
+        } else {
+            this.getPageData();
+        }
     },
     tabRecord: function (e) {
         var index = parseInt(e.currentTarget.dataset.key);
@@ -276,6 +281,7 @@ Page({
         });
     },
     previewImage: function (e) {
+        this.setData({isPreviewImage: true});
         var current = e.target.dataset.src;
         wx.previewImage({
             current: current,

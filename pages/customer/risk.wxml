@@ -75,7 +75,7 @@
             <view style='font-size:14px;color:#999999;margin-top:10px'>
                 <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
                     <block wx:for="{{item.relevantPictures}}" wx:for-item="subItem">
-                        <image class="scroll-view-item_H" src="{{subItem}}"></image>
+                        <image class="scroll-view-item_H" src="{{subItem}}"  data-src="{{subItem}}" bindtap="previewImage"></image>
                     </block>
                 </scroll-view>
             </view>
