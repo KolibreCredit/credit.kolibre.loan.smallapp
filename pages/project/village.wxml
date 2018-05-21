@@ -10,7 +10,7 @@
             <swiper bindchange="swiperChange" data-index="{{index}}">
                 <block wx:for="{{item.sceneryPictures}}" wx:for-item="subItem">
                     <swiper-item>
-                        <image src="{{subItem}}" class="slide-image"/>
+                        <image src="{{subItem}}" class="slide-image" mode="aspectFill"/>
                     </swiper-item>
                 </block>
             </swiper>
