@@ -141,8 +141,9 @@ var filter = {
                 return "其他";
         }
     },
-    formatCurrentRead:function (currentRead) {
-        return (currentRead/100);
+    formatCurrentRead: function (currentRead) {
+        currentRead = Number(currentRead * 0.01);
+        return currentRead.toFixed(2);
     }
 }
 
