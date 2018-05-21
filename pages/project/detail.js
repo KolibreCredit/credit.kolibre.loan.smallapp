@@ -275,6 +275,13 @@ Page({
             waterElectricRecordItems: waterElectricRecordItems
         });
     },
+    previewImage: function (e) {
+        var current = e.target.dataset.src;
+        wx.previewImage({
+            current: current,
+            urls: [current]
+        });
+    },
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */

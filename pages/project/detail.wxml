@@ -33,7 +33,7 @@
             <view class="picture">
                 <swiper bindchange="roomRecordPicturesChange" data-index="{{index}}">
                     <swiper-item wx:for="{{item.pictures}}" wx:for-item="subItem">
-                        <image src="{{subItem}}" class="slide-image"/>
+                        <image src="{{subItem}}" data-src="{{subItem}}" class="slide-image" bindtap="previewImage"/>
                     </swiper-item>
                 </swiper>
                 <view class="hint">
@@ -96,7 +96,7 @@
             <view class="picture" wx:if="{{item.lockPictures!=null}}">
                 <swiper bindchange="doorLockRecordsPicturesChange" data-index="{{index}}">
                     <swiper-item wx:for="{{item.lockPictures}}" wx:for-item="subItem">
-                        <image src="{{subItem}}" class="slide-image"/>
+                        <image src="{{subItem}}" data-src="{{subItem}}" class="slide-image" bindtap="previewImage"/>
                     </swiper-item>
                 </swiper>
                 <view class="hint">
@@ -164,7 +164,7 @@
             <view class="picture" wx:if="{{item.recordPictures!=null}}">
                 <swiper bindchange="waterElectricRecordsPicturesChange" data-index="{{index}}">
                     <swiper-item wx:for="{{item.recordPictures}}" wx:for-item="subItem">
-                        <image src="{{subItem}}" class="slide-image"/>
+                        <image src="{{subItem}}" class="slide-image" data-src="{{subItem}}" bindtap="previewImage"/>
                     </swiper-item>
                 </swiper>
                 <view class="hint">
