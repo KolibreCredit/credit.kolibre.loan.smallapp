@@ -172,7 +172,7 @@
                 </view>
             </view>
             <view class="describe">
-                {{filter.formatDeviceType(item.deviceType)}}读数:{{filter.formatCurrentRead(item.currentRead).toFixed(2)}} /安全范围:{{item.securityRange }}%
+                {{filter.formatDeviceType(item.deviceType)}}读数:{{filter.formatCurrentRead(item.currentRead) }} /安全范围:{{item.securityRange }}%
                 <image wx:if="{{waterElectricRecordItems[index].ismore}}"
                        src='http://h.fengniaowu.com/loan/image/up.png'
                        style="width:24px;height:24px;vertical-align:middle" data-index="{{index}}"
