@@ -8,9 +8,10 @@
 .logo {
     position: absolute;
     width: 240px;
-    height: 80px;
-    top: 10px;
-    left: 20px;
+    top: 40px;
+    font-size: 18px;
+    color: #ffffff;
+    padding-left: 20px;
 }
 
 .qiehuan {

@@ -1,6 +1,6 @@
 /**index.wxss**/
 page {
-  background-image: url("http://h.fengniaowu.com/loan/image/bg2.jpg");
+  background-color: #27B3BC;
 }
 
 .list {
@@ -9,47 +9,54 @@ page {
   margin-top: -100px;
   border-radius: 6px;
 }
-
 .item {
   height: 70px;
   border-bottom: 1px solid #f1f1f1;
-  position: relative;
+  display: flex;
+  flex-direction: row;
 }
-
 .item .logo {
-  width: 140px;
-  height: 60px;
-  margin-left: 20px;
-  margin-top:5px;
+  width:60px;
+  padding-left:20px;
+  margin-top:15px;
 }
-
-.item .hint1 {
+.logo image {
+  width: 40px;
+  height: 40px;
+}
+.item .tenancyName {
+  font-size: 16px;
+  color: #333333;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 70px;
+  padding: 0 10px;
+}
+.item .hints {
+  width:70px;
+}
+.hints .hint1 {
   width: 70px;
   height: 26px;
-  top: 22px;
-  right: 58px;
-  position: absolute;
-  cursor: pointer;
+  margin-top:22px;
 }
-
-.item .hint2 {
+.hints .hint2 {
   width: 70px;
   height: 26px;
-  top: 22px;
-  right: 58px;
-  position: absolute;
-  cursor: pointer;
+  margin-top:22px;
 }
-
-.item:last-child {
-  border: none;
-}
-
 .item .jiantou {
+  width: 54px;
+}
+.jiantou image {
   width: 24px;
   height: 24px;
-  top: 23px;
-  right: 23px;
-  position: absolute;
-  cursor: pointer;
+  margin-top: 23px;
+  padding-left:10px;
+  padding-right:20px;
+}
+.item:last-child {
+  border: none;
 }

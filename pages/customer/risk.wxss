@@ -9,14 +9,13 @@ page {
 }
 .logo {
   width: 100%;
-  top:10px;
-  position: absolute;
+  top: 30px;
   text-align: center;
+  font-size: 18px;
+  color: #ffffff;
+  position: absolute
 }
-.logo image {
-  width: 200px;
-  height: 60px;
-}
+
 .fengxian {
   width: 100%;
   height: 140px;

@@ -22,6 +22,7 @@ Page({
         riskLables: null,
         activeIndex: -1,
         isRiskLableName: false,
+        riskLableStyle: "block",
         riskLableName2: "",
         activeGrade: 0,
         riskGrades: [{
@@ -75,13 +76,15 @@ Page({
     },
     showItemRiskLable: function (e) {
         this.setData({
-            isRiskLableName: true
+            isRiskLableName: true,
+            riskLableStyle: "none"
         });
     },
     hideItemRiskLable: function (e) {
         this.setData({
             isRiskLableName: false,
-            riskLableName2: ""
+            riskLableName2: "",
+            riskLableStyle: "block"
         });
     }
     , selectRiskLable: function (e) {

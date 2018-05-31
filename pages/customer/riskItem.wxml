@@ -5,34 +5,15 @@
 <view class='mui-content'>
     <view style="padding: 0 20px;background-color:#FFFFFF">
         <view style="height: 60px;line-height:60px;font-size:16px;color:#646464;border-bottom:1px solid #e9e9e9;position:relative">
-           请选择风险标签<image class="add" src='http://h.fengniaowu.com/loan/image/add2.png' bindtap="showItemRiskLable"></image>
+            请选择风险标签
+            <image class="add" src='http://h.fengniaowu.com/loan/image/add2.png' bindtap="showItemRiskLable"></image>
         </view>
         <view class="riskLables">
-            <view class="itemLables {{index==activeIndex?'active':''}}" data-key="{{index}}" wx:for="{{riskLables}}"  bindtap="selectRiskLable">
+            <view class="itemLables {{index==activeIndex?'active':''}}" data-key="{{index}}" wx:for="{{riskLables}}"
+                  bindtap="selectRiskLable">
                 {{item.lableName}}
             </view>
             <view style="clear:both;height:15px"></view>
-        </view>
-    </view>
-    <view class="addItemRiskLable" wx:if="{{isRiskLableName}}">
-        <view style="background:#ffffff;box-shadow:0 15px 25px 0 rgba(0,0,0,0.20);border-radius:6px;width:100%;height:238px;padding:0 20px">
-            <view style="text-align:center;margin-top:30px;font-size:18px;color:#646464">
-                添加风险标签
-            </view>
-            <view style="margin-top:50px;border-bottom:1px solid #e9e9e9;padding-bottom:5px">
-                <input type="text" placeholder="请输入风险标签名称" style="font-size:16px;color:#99999" maxlength="20"
-                     data-key="riskLable" bindinput="bindKeyInput"/>
-            </view>
-            <view style="margin-top: 40px">
-                <view style="border:1px solid #47cabf;text-align:center;border-radius:100px;width:118px;height:38px;line-height: 38px;display: inline-block;font-size:18px;color:#47cabf"
-                      bindtap="hideItemRiskLable">
-                    取消
-                </view>
-                <button class="btnActive"
-                        style="background:#47cabf;border-radius:40px;height:40px;line-height: 40px;color:#ffffff;font-size:18px;width:118px;border:none;float:right"
-                        bindtap="createRiskLable">确定
-                </button>
-            </view>
         </view>
     </view>
     <view style="background-color: #FFFFFF;padding:20px;margin-top:10px">
@@ -62,14 +43,16 @@
         <view style="height:50px;line-height:50px;font-size:16px;color:#646464">
             描述
         </view>
-        <textarea placeholder="请输入描述内容" style="border:1px solid #e9e9e9;width:95%;height:98px;padding: 5px" data-key="riskDescribe" bindinput="bindKeyInput"/>
+        <textarea placeholder="请输入描述内容" style="border:1px solid #e9e9e9;width:95%;height:98px;padding: 5px;display:{{riskLableStyle}}"
+                  data-key="riskDescribe" bindinput="bindKeyInput"/>
         <view style="margin-top:10px;font-size:16px;color:#646464">
             相关资料<span style="color:#B2B2B2;display:none">（不超过5张）</span>
         </view>
         <scroll-view class="scroll-view_H" scroll-x="true" style="width:100%">
             <view class="scroll-view-item_H" wx:for="{{relevantPictures}}">
                 <image src="{{item}}"></image>
-                <image src="http://h.fengniaowu.com/loan/image/delete.png" class="delete" data-key="{{index}}"  bindtap="deleteRiskPictures"></image>
+                <image src="http://h.fengniaowu.com/loan/image/delete.png" class="delete" data-key="{{index}}"
+                       bindtap="deleteRiskPictures"></image>
             </view>
             <view class="scroll-view-item_H chooseImage" bindtap="bindAddRiskPictures">
                 <image src="http://h.fengniaowu.com/loan/image/add2.png"></image>
@@ -78,7 +61,31 @@
     </view>
     <view style="background-color: #FFFFFF;height:40px"></view>
     <view style="padding:0 20px;background-color: #FFFFFF;">
-        <button class="btnActive" style="background:#47cabf;border-radius:40px;height:40px;line-height: 40px;color:#ffffff;font-size:18px;width:100%;border:none;"  bindtap="createRisk">确认并提交</button>
+        <button class="btnActive"
+                style="background:#47cabf;border-radius:40px;height:40px;line-height: 40px;color:#ffffff;font-size:18px;width:100%;border:none;"
+                bindtap="createRisk">确认并提交
+        </button>
+    </view>
+    <view class="addItemRiskLable" wx:if="{{isRiskLableName}}">
+        <view style="background:#ffffff;box-shadow:0 15px 25px 0 rgba(0,0,0,0.20);border-radius:6px;width:100%;height:238px;padding:0 20px">
+            <view style="text-align:center;margin-top:30px;font-size:18px;color:#646464">
+                添加风险标签
+            </view>
+            <view style="margin-top:50px;border-bottom:1px solid #e9e9e9;padding-bottom:5px">
+                <input type="text" placeholder="请输入风险标签名称" style="font-size:16px;color:#99999" maxlength="20"
+                       data-key="riskLable" bindinput="bindKeyInput"/>
+            </view>
+            <view style="margin-top: 40px">
+                <view style="border:1px solid #47cabf;text-align:center;border-radius:100px;width:118px;height:38px;line-height: 38px;display: inline-block;font-size:18px;color:#47cabf"
+                      bindtap="hideItemRiskLable">
+                    取消
+                </view>
+                <button class="btnActive"
+                        style="background:#47cabf;border-radius:40px;height:40px;line-height: 40px;color:#ffffff;font-size:18px;width:118px;border:none;float:right"
+                        bindtap="createRiskLable">确定
+                </button>
+            </view>
+        </view>
     </view>
     <view style="background-color: #FFFFFF;height:20px"></view>
     <view class="msg-post" wx:if="{{isPost}}">

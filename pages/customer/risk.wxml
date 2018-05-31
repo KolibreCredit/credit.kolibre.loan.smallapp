@@ -10,7 +10,7 @@
                class='fengxian'></image>
         <image wx:else src='http://h.fengniaowu.com/loan/image/anquan1.png' mode='scaleToFill' class='anquan'></image>
         <view class="logo">
-            <image src="{{filter.domainToLogo2(tenancyResponse.license)}}" mode='scaleToFill'></image>
+           {{tenancyResponse.tenancyName}}
         </view>
         <view class='add'>
             <image src='http://h.fengniaowu.com/loan/image/add.png' bindtap="addRisk"></image>
