@@ -16,14 +16,14 @@
     </view>
     <view style="height:10px"></view>
     <view style="padding-left:20px">
-        <navigator url="/pages/message/index">
+    <!--    <navigator url="/pages/message/index">
             <view class="item">
                 <image src='http://h.fengniaowu.com/loan/image/message.png' class="message"/>
                 <span style="margin-left:35px">消息管理</span>
                 <span style="float:right;margin-right:50px;display:none">0</span>
                 <image src='http://h.fengniaowu.com/loan/image/jiantou.png' class='jiantou'/>
             </view>
-        </navigator>
+        </navigator>-->
         <navigator url="/pages/user/user">
             <view class="item">
                 <image src='http://h.fengniaowu.com/loan/image/user1.png' class="message"/>

@@ -46,6 +46,8 @@ var filter = {
                 return "http://h.fengniaowu.com/loan/image/logo/anzhigongyu.png";
             case "众寓时代光公寓":
                 return "http://h.fengniaowu.com/loan/image/logo/zhongyu.png";
+            case "昔舍公寓":
+                return "http://h.fengniaowu.com/loan/image/logo/xishe.png";
             default:
                 return "http://h.fengniaowu.com/loan/image/logo/logoerr.png";
         }
@@ -84,6 +86,10 @@ var filter = {
     formatCurrentRead: function (currentRead) {
         currentRead = Number(currentRead * 0.01);
         return currentRead.toFixed(2);
+    },
+    formatSecurityRange: function (securityRange) {
+        securityRange = securityRange * 100;
+        return securityRange.toFixed(2);
     }
 }
 
@@ -93,5 +99,6 @@ module.exports = {
     formatYYYMMDD: filter.formatYYYMMDD,
     formatDeviceType: filter.formatDeviceType,
     formatRoomState: filter.formatRoomState,
-    formatCurrentRead: filter.formatCurrentRead
+    formatCurrentRead: filter.formatCurrentRead,
+    formatSecurityRange: filter.formatSecurityRange
 }

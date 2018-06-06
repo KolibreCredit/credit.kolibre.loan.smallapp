@@ -5,42 +5,49 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--pages/project/village.wxml-->
 <view class="mui-content">
-    <block wx:for="{{villageSceneries.data}}">
-        <view class="itemScenerie">
-            <swiper bindchange="swiperChange" data-index="{{index}}">
-                <block wx:for="{{item.sceneryPictures}}" wx:for-item="subItem">
-                    <swiper-item>
-                        <image src="{{subItem}}" class="slide-image" mode="aspectFill" data-src="{{subItem}}"  bindtap="previewImage"/>
-                    </swiper-item>
-                </block>
-            </swiper>
-            <view class="pageHint">
-                {{itemDatas[index].currentIndex+1}}/{{item.sceneryPictures.length}}
+    <view class="itemScenerie" wx:for="{{villageSceneries.data}}">
+        <swiper bindchange="swiperChange" data-index="{{index}}">
+            <swiper-item wx:for="{{item.sceneryPictures}}" wx:for-item="subItem">
+                <image src="{{subItem}}" class="slide-image" mode="aspectFill" data-src="{{subItem}}"
+                       bindtap="previewImage"/>
+            </swiper-item>
+        </swiper>
+        <view class="pageHint">
+            {{itemDatas[index].currentIndex+1}}/{{item.sceneryPictures.length}}
+        </view>
+        <view class="editor">
+            <image src="http://h.fengniaowu.com/loan/image/editor2.png" data-sceneryId="{{item.sceneryId}}"
+                   bindtap="editorItem"/>
+        </view>
+        <view class="delete">
+            <image src="http://h.fengniaowu.com/loan/image/delete2.png" data-sceneryId="{{item.sceneryId}}"
+                   bindtap="showItemDelete"/>
+        </view>
+        <view style="height:50px;position:relative;padding:10px 45px 10px 0;line-height:30px">
+            <view class="sceneryTypeName">
+                {{item.sceneryTypeName}}
             </view>
-            <view class="editor">
-                <image src="http://h.fengniaowu.com/loan/image/editor2.png" data-sceneryId="{{item.sceneryId}}"
-                       bindtap="editorItem"/>
-            </view>
-            <view class="delete">
-                <image src="http://h.fengniaowu.com/loan/image/delete2.png" data-sceneryId="{{item.sceneryId}}"
-                       bindtap="showItemDelete"/>
-            </view>
-            <view style="height:50px;position:relative;padding:10px 45px 10px 0;line-height:30px">
-                <view class="sceneryTypeName">
-                    {{item.sceneryTypeName}}
-                </view>
-                <text style="float:right;font-size:14px;color:#646464">{{filter.formatYYYMMDD(item.createTime)}}</text>
-                <image wx:if="{{itemDatas[index].isMore}}" src="http://h.fengniaowu.com/loan/image/up.png" class="more" data-index="{{index}}"
-                       bindtap="hideMore"/>
-                <image wx:else src="http://h.fengniaowu.com/loan/image/down.png" class="more" data-index="{{index}}" bindtap="showMore"/>
-            </view>
-            <view wx:if="{{itemDatas[index].isMore}}" style="padding:0 20px 10px 20px">
-                <view style="padding:10px;font-size:14px;color:#646464;background:rgba(176,190,197,0.15);border-radius:2px;line-height:20px">
-                   描述：{{item.describe}}
-                </view>
+            <text style="float:right;font-size:14px;color:#646464">{{filter.formatYYYMMDD(item.createTime)}}</text>
+            <image wx:if="{{itemDatas[index].isMore}}" src="http://h.fengniaowu.com/loan/image/up.png" class="more"
+                   data-index="{{index}}"
+                   bindtap="hideMore"/>
+            <image wx:else src="http://h.fengniaowu.com/loan/image/down.png" class="more" data-index="{{index}}"
+                   bindtap="showMore"/>
+        </view>
+        <view wx:if="{{itemDatas[index].isMore}}" style="padding:0 20px 10px 20px">
+            <view style="padding:10px;font-size:14px;color:#646464;background:rgba(176,190,197,0.15);border-radius:2px;line-height:20px">
+                描述：{{item.describe}}
             </view>
         </view>
-    </block>
+    </view>
+    <view style="text-align:center;position:absolute;top:0;right:0;left:0;bottom:50px;display:flex;align-items:center;justify-content:center;flex-direction:column">
+         <view style="width:70px;height:70px">
+             <image src="http://h.fengniaowu.com/loan/image/village.png" style="width:70px;height:70px"/>
+         </view>
+         <view style="font-size:16px;color:#999999">
+             暂无记录
+         </view>
+    </view>
     <view style="height:50px"></view>
     <view class="footer">
         <view class="add" bindtap="addVillage">
@@ -79,13 +86,16 @@
         <view class="tenancy">
             <view class="section__title">
                 请选择公寓
-                <image src='http://h.fengniaowu.com/loan/image/close.png' class="close" bindtap="hideApartments"></image>
+                <image src='http://h.fengniaowu.com/loan/image/close.png' class="close"
+                       bindtap="hideApartments"></image>
             </view>
             <scroll-view scroll-y="true" style="height:330px">
                 <view class="scroll-view-item" wx:for="{{apartmentList}}">
                     {{item.apartmentName}}
-                    <image wx:if="{{item.apartmentId==apartmentId}}" src="http://h.fengniaowu.com/loan/image/checks.png"/>
-                    <image wx:else src="http://h.fengniaowu.com/loan/image/check.png" data-apartmentId="{{item.apartmentId}}"
+                    <image wx:if="{{item.apartmentId==apartmentId}}"
+                           src="http://h.fengniaowu.com/loan/image/checks.png"/>
+                    <image wx:else src="http://h.fengniaowu.com/loan/image/check.png"
+                           data-apartmentId="{{item.apartmentId}}"
                            bindtap="pickApartment"/>
                 </view>
             </scroll-view>

@@ -35,6 +35,12 @@
             </view>
         </view>
     </view>
+    <view wx:if="{{villageAparment.data.length==0}}" style="margin-top:180px;text-align:center">
+        <image src='http://h.fengniaowu.com/loan/image/villageAparment.png' style="width:70px;height:70px"></image>
+    </view>
+    <view wx:if="{{villageAparment.data.length==0}}" style="margin-top:10px;text-align:center;font-size:16px;color:#999999">
+        暂无项目
+    </view>
     <view class="choose" wx:if="{{isTenancys}}">
         <view class="tenancy">
             <view class="section__title">
