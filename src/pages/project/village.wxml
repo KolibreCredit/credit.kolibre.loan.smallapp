@@ -5,15 +5,14 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--pages/project/village.wxml-->
 <view class="mui-content">
-    <view class="itemScenerie" wx:for="{{villageSceneries.data}}">
-        <swiper bindchange="swiperChange" data-index="{{index}}">
+    <view class="itemScenerie" wx:for="{{villageSceneries.data}}" wx:for-index="idx">
+        <swiper bindchange="swiperChange" data-index="{{idx}}">
             <swiper-item wx:for="{{item.sceneryPictures}}" wx:for-item="subItem">
-                <image src="{{subItem}}" class="slide-image" mode="aspectFill" data-src="{{subItem}}"
-                       bindtap="previewImage"/>
+                <image src="{{subItem}}" class="slide-image" mode="aspectFill" data-src="{{subItem}}"  bindtap="previewImage" data-idx="{{idx}}"/>
             </swiper-item>
         </swiper>
         <view class="pageHint">
-            {{itemDatas[index].currentIndex+1}}/{{item.sceneryPictures.length}}
+            {{itemDatas[idx].currentIndex+1}}/{{item.sceneryPictures.length}}
         </view>
         <view class="editor">
             <image src="http://h.fengniaowu.com/loan/image/editor2.png" data-sceneryId="{{item.sceneryId}}"
@@ -40,13 +39,13 @@
             </view>
         </view>
     </view>
-    <view style="text-align:center;position:absolute;top:0;right:0;left:0;bottom:50px;display:flex;align-items:center;justify-content:center;flex-direction:column">
-         <view style="width:70px;height:70px">
-             <image src="http://h.fengniaowu.com/loan/image/village.png" style="width:70px;height:70px"/>
-         </view>
-         <view style="font-size:16px;color:#999999">
-             暂无记录
-         </view>
+    <view wx:if="{{villageSceneries.data.length==0}}" style="text-align:center;position:absolute;top:0;right:0;left:0;bottom:50px;display:flex;align-items:center;justify-content:center;flex-direction:column">
+        <view style="width:70px;height:70px">
+            <image src="http://h.fengniaowu.com/loan/image/village.png" style="width:70px;height:70px"/>
+        </view>
+        <view style="font-size:16px;color:#999999">
+            暂无记录
+        </view>
     </view>
     <view style="height:50px"></view>
     <view class="footer">

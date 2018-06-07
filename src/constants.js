@@ -123,6 +123,7 @@ var constants = {
         RISKDESCRIBE: "风险描述不能为空",
         SCENERYDESCRIBE: "请选择全景类型",
         SCENERYDESCRIBE2: "全景类型名称不能为空",
+        SCENERYDESCRIBE3: "相关资料不能为空",
         SCENERYTYPESUCCEE: "全景类型添加成功",
         SCENERYSUCCEE:"全景添加成功",
         DELETESCENERY:"删除全景成功",

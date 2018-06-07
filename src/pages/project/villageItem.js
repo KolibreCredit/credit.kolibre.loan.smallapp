@@ -17,13 +17,12 @@ Page({
     data: {
         villageId: "",
         sceneryId: "",
-        sceneryIndex: -1,
-        sceneryTypeName: "请选择全景类型",
         sceneryTypes: null,
-        isSceneryType: false,
-        sceneryTypeName2: "",
+        sceneryIndex: -1,
         sceneryDescribe: "",
         sceneryPictures: null,
+        isSceneryType: false,
+        sceneryTypeName: "",
         isUpdate: false,
         isPost: false
     },
@@ -69,13 +68,11 @@ Page({
         var itemIndex = e.currentTarget.dataset.key;
         if (itemIndex == this.data.sceneryIndex) {
             this.setData({
-                sceneryIndex: -1,
-                sceneryTypeName: "请选择全景类型"
+                sceneryIndex: -1
             });
         } else {
             this.setData({
-                sceneryIndex: itemIndex,
-                sceneryTypeName: this.data.sceneryTypes[itemIndex].sceneryTypeName
+                sceneryIndex: itemIndex
             });
         }
     },
@@ -87,14 +84,14 @@ Page({
     hideItemSceneryType: function (e) {
         this.setData({
             isSceneryType: false,
-            sceneryDescribe2: ""
+            sceneryTypeName: ""
         });
     },
     bindKeyInput: function (e) {
         var key = e.target.dataset.key;
         if (key == "sceneryType") {
             this.setData({
-                sceneryTypeName2: e.detail.value
+                sceneryTypeName: e.detail.value
             });
         } else {
             this.setData({
@@ -103,13 +100,13 @@ Page({
         }
     },
     createSceneryType: function (e) {
-        if (this.data.sceneryTypeName2 == "") {
+        if (this.data.sceneryTypeName == "") {
             mui.toast(constants.MSGINFO.SCENERYDESCRIBE2);
             return false;
         }
         var that = this;
         var itemSceneryType = {
-            sceneryTypeName: this.data.sceneryTypeName2
+            sceneryTypeName: this.data.sceneryTypeName
         };
         app.postInvoke(constants.URLS.CREATESCENERYTYPE, itemSceneryType, function (res) {
             if (res.succeeded) {
@@ -159,6 +156,10 @@ Page({
             mui.toast(constants.MSGINFO.SCENERYDESCRIBE);
             return false;
         }
+        if (this.data.sceneryPictures == null || this.data.sceneryPictures.length == 0) {
+            mui.toast(constants.MSGINFO.SCENERYDESCRIBE3);
+            return false;
+        }
         var sceneryTypeId = this.data.sceneryTypes[this.data.sceneryIndex].sceneryTypeId;
         var itemScenery = {
             villageId: this.data.villageId,
@@ -173,7 +174,9 @@ Page({
             if (res.succeeded) {
                 mui.toast(constants.MSGINFO.SCENERYSUCCEE);
                 setTimeout(function () {
-                    wx.navigateTo({url: '/pages/project/village?villageId=' + that.data.villageId});
+                    wx.navigateTo({
+                        url: '/pages/project/village?villageId=' + that.data.villageId
+                    });
                 }, 2000);
             } else {
                 mui.toast(res.message);
@@ -200,7 +203,6 @@ Page({
                 var selectIndex = that.findSceneryTypesIndex(res.data.sceneryTypeId);
                 that.setData({
                     sceneryIndex: selectIndex,
-                    sceneryTypeName: res.data.sceneryTypeName,
                     sceneryDescribe: res.data.describe,
                     sceneryPictures: res.data.sceneryPictures,
                     villageId: res.data.villageId

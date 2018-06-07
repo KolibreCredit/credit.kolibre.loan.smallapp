@@ -80,9 +80,10 @@ Page({
     previewImage: function (e) {
         this.setData({isPreviewImage: true});
         var current = e.target.dataset.src;
+        var idx = e.target.dataset.idx;
         wx.previewImage({
             current: current,
-            urls: [current]
+            urls: this.data.villageSceneries.data[idx].sceneryPictures
         });
     },
     /**

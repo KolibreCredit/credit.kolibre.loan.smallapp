@@ -11,10 +11,10 @@
     <view style='padding:0 10px'>
         <view class='list'>
             <view class='item' wx:for="{{list}}">
-                <view class='logo'>
+                <view class='logo' data-tenancyId="{{item.tenancyId}}" bindtap="bindView">
                     <image src='{{filter.getLogoByTenancyName(item.tenancyName)}}'/>
                 </view>
-                <view class="tenancyName">{{item.tenancyName}}</view>
+                <view class="tenancyName" data-tenancyId="{{item.tenancyId}}" bindtap="bindView">{{item.tenancyName}}</view>
                 <view class="hints">
                     <image wx:if="{{item.isHasRisk}}" src='http://h.fengniaowu.com/loan/image/fengxian.png'   class='hint1' data-tenancyId="{{item.tenancyId}}" bindtap="bindItem"/>
                     <image wx:else src='http://h.fengniaowu.com/loan/image/anquan.png' class='hint2' data-tenancyId="{{item.tenancyId}}" bindtap="bindItem"/>

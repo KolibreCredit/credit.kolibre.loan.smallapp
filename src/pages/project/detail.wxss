@@ -215,6 +215,9 @@
     color: #646464;
     line-height: 12px;
     margin-top: 8px;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
 }
 
 .doorLockDevicesView .device {
