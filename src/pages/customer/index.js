@@ -19,6 +19,10 @@ Page({
 
     },
     onShow: function () {
+        /*wx.showLoading({
+            title: '加载中',
+        })
+        wx.showNavigationBarLoading();*/
         this.getTenanies();
     },
     getTenanies: function () {

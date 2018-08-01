@@ -57,13 +57,13 @@ var filter = {
     },
     formatDeviceType: function (deviceType) {
         switch (deviceType) {
-            case "ColdWaterMeter":
+            case "coldwatermeter":
                 return "冷水";
-            case "HotWaterMeter":
+            case "hotwatermeter":
                 return "热水";
-            case "ElectricMeter":
+            case "elemeter":
                 return "电表";
-            case "GasMeter":
+            case "gasmeter":
                 return "气表";
             default:
                 return "未知设备";

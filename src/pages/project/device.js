@@ -24,13 +24,13 @@ Page({
         deviceType: "",
         deviceTypeIndex: 0,
         deviceTypes: [{
-            key: "ColdWaterMeter",
+            key: "coldwatermeter",
             desc: "冷水"
         }, {
-            key: "HotWaterMeter",
+            key: "hotwatermeter",
             desc: "热水"
         }, {
-            key: "ElectricMeter",
+            key: "elemeter",
             desc: "电"
         }],
         deviceModelType: "NotIntelligence",
@@ -83,7 +83,7 @@ Page({
         }
         var deviceType = "";
         if (this.data.tabIndex == 1) {
-            deviceType = "DoorLock";
+            deviceType = "lock";
         } else {
             deviceType = this.data.deviceTypes[this.data.deviceTypeIndex].key;
         }
